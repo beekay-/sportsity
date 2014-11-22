@@ -48,9 +48,17 @@ body {
     margin-right: 10px;
 }
 .sportsity {
-    width: 80px;
+    width: 100px;
+    background: rgb(0, 171, 56);
 }
-.geolocation, .vote, .help {
+.icon {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.geolocate, .vote, .help {
     width: 45px;
     -webkit-animation-delay: 1.1s;
     animation-delay: 1.1s;
@@ -72,7 +80,7 @@ body {
     -webkit-animation-delay: 1.4s;
     animation-delay: 1.4s;
 }
-.geolocation:hover, .vote:hover, .help:hover {
+.geolocation:hover, .vote:hover, .help:hover, dropdown:hover {
     cursor: pointer;
 }
 #map-canvas {
@@ -80,11 +88,11 @@ body {
     width: 100%;
 }
 @media only screen and (max-width: 42em) {
-    .vote, .help {
+    .vote, .geolocate, .help {
         display: none;
     }
     .dropdown {
-        -webkit-animation-delay: 1.2s;
-        animation-delay: 1.2s;
+        -webkit-animation-delay: 1.1s;
+        animation-delay: 1.1s;
     }
 }

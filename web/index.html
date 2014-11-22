@@ -6,22 +6,33 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="apple-mobile-web-app-title" content="Sportsity">
-<title>Sportsity | Find Your Game</title>
+<title>Sportsity &#9679; Let the Games Begin</title>
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/animate.css" />
-<link rel="apple-touch-icon-precomposed" href="imgs/apple-touch-icon.png" />
-<link href="imgs/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link rel="stylesheet" href="css/animate.min.css" />
+<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/loadscrn-iphone6.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/loadscrn-iphone6p.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="loadscrn-iphone5.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="img/loadscrn-iphone4.png" />
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script src="js/maps.js"></script>
 </head>
 <body onload="initialize();">
     <div id="menu">
-        <div class="ui sportsity animated bounceInDown"> </div>
-        <div class="ui geolocation animated bounceInDown"> </div>
-        <div class="ui vote animated bounceInDown"> </div>
-        <div class="ui help animated bounceInDown"> </div>
+        <div class="ui sportsity animated bounceInDown">
+            <img src="img/sportsity-logo.png" alt="Sportsity" width="100" height="45" />
+        </div>
+        <div class="ui geolocate animated bounceInDown"> 
+            <img class="icon" src="img/arrow.png" alt="Locate" title="Locate Me" width="24" height="24" />
+        </div>
+        <div class="ui vote animated bounceInDown"> 
+            <img class="icon" src="img/vote.png" alt="Vote" title="Vote for Next City" width="24" height="24" />
+        </div>
+        <div class="ui help animated bounceInDown"> 
+            <img class="icon" src="img/help.png" alt="Help" title="Help" width="24" height="24" />
+        </div>
         <div class="ui dropdown animated bounceInDown"></div>
     </div>
 	<div id="map-canvas"> </div>
