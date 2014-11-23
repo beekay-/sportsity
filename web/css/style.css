@@ -100,6 +100,55 @@ body {
     }
 }
 
+/* ANIMATE CSS - http://daneden.me/animate */
+
+.animated {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+@keyframes bounceInDown {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -3000px, 0);
+            transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+            transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+            transform: translate3d(0, 5px, 0);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+.bounceInDown {
+  -webkit-animation-name: bounceInDown;
+          animation-name: bounceInDown;
+}
+
 /* JQUERY UI */ 
 
 .ui-helper-hidden {
@@ -134,7 +183,7 @@ body {
 	clear: both; 
 }
 .ui-helper-clearfix {
-    min-height: 0; /* support: IE7 */;
+    min-height: 0;
 }
 .ui-helper-zfix {
     width: 100%;
@@ -147,18 +196,15 @@ body {
 .ui-front {
 	z-index: 100; 
 }
-/* Interaction Cues */
 .ui-state-disabled {
 	cursor: default;
 }
-/* Icons */
 .ui-icon {
     display: block;
     text-indent: -99999px;
     overflow: hidden;
     background-repeat: no-repeat;
 }
-/* Overlays */
 .ui-widget-overlay {
     position: fixed;
     top: 0;
@@ -166,10 +212,6 @@ body {
     width: 100%;
     height: 100%;
 }
-/*.ui-draggable-handle {
-    -ms-touch-action: none;
-    touch-action: none;
-}*/
 .ui-button {
     display: inline-block;
     position: relative;
@@ -179,7 +221,7 @@ body {
     cursor: pointer;
     vertical-align: middle;
     text-align: center;
-    overflow: visible; /* removes extra width in IE */
+    overflow: visible;
 }
 .ui-button, .ui-button:link, .ui-button:visited, .ui-button:hover, .ui-button:active {    text-decoration: none }
 .ui-button-icon-only {
@@ -214,7 +256,6 @@ button.ui-button-icons-only {
 input.ui-button {
 	padding: .4em 1em; 
 }
-/* Button Icon Element(s) */
 .ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon {
     position: absolute;
     top: 50%;
@@ -237,8 +278,6 @@ input.ui-button {
     margin-left: 0;
     margin-right: -.3em;
 }
-/* Workarounds */
-/* Reset extra padding in Firefox, see h5bp.com/l */
 input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
     border: 0;
     padding: 0;
@@ -266,7 +305,7 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 }
 .ui-dialog .ui-dialog-titlebar-close {
     position: absolute;
-    right: 1em;
+    right: 0.5em;
     top: 50%;
     width: 20px;
     margin: -8px 0 0 0;
@@ -304,10 +343,8 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 .ui-draggable .ui-dialog-titlebar {
 	cursor: move; 
 }
-/* Component containers */
 .ui-widget {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        border-radius: 3px;
+    border-radius: 3px;
     -webkit-border-radius: 3px;
     -webkit-box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15); 
     box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15);
@@ -324,49 +361,40 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 .ui-widget-header a {
 	color: #FFF; 
 }
-/* Interaction states */
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-/*  border: 1px solid #faa30b;
-    background: #faa30b;*/
+    background: #fff;
     border: 0;
     box-shadow: none;
-    font-weight: bold;
-    color: #888;
 }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
     color: #faa30b;
     text-decoration: none;
 }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-    background: #faa30b;
     font-weight: bold;
-    color: #faa30b;
 }
 .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited, .ui-state-focus a, .ui-state-focus a:hover, .ui-state-focus a:link, .ui-state-focus a:visited {
 	text-decoration: none; 
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
     font-weight: bold;
-    color: #faa30b;
 }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
 	text-decoration: none; 
 }
-/* Icons */
 .ui-icon {
     width: 16px;
     height: 16px;
 }
 .ui-widget-header .ui-icon { 
-	background-image: url("../imgs/close-button.png"); 
+	background-image: url("../img/close-button.png"); 
 }
 .ui-state-default .ui-icon {
-	background-image: url("../imgs/close-button.png"); 
+	background-image: url("../img/close-button.png"); 
 }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-	background-image: url("../imgs/close-button.png"); 
+	background-image: url("../img/close-button.png"); 
 }
-/* Positioning */
 .ui-icon-close {
     background-position: top;
     background-size: 12px 12px;
@@ -375,7 +403,6 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
     background-position: top;
     background-size: 12px 12px;
 }
-/* Overlays */
 .ui-widget-overlay {
     background: #000;
     opacity: .65;
