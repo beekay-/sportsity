@@ -25,3 +25,9 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function modalUI() {
+	var options = { autoOpen: false, modal: true, width: '80%', height: 'auto', resizable: false, closeOnEscape: true };
+    $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
+	$('.open-help').click(function() { $('#help').dialog(options).dialog('open'); });
+}
