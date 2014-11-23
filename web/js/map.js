@@ -23,7 +23,7 @@ function initialize() {
 }
 
 function modalUIOpen() {
-	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: '275', height: '275', resizable: false, closeOnEscape: true, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
+	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: 275, minHeight: 255, height: 'auto', resizable: false, closeOnEscape: true, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
     var optionsHelp = {show: {effect: "bounce", duration: 1000}, modal: true, width: '275', height: '275', resizable: false, closeOnEscape: true, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#help').dialog('close');})} };
     $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
 	$('.open-help').click(function() { $('#help').dialog(optionsHelp).dialog('open'); });
