@@ -10,6 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Sportsity">
 <title>Sportsity &#9679; Let the Games Begin</title>
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">
 <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/loadscrn-iphone6.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/loadscrn-iphone6p.png" />
@@ -36,12 +37,15 @@
     </div>
 	<div id="map-canvas"> </div>
     <div id="about"> 
-        
+        <h1>Welcome to Sportsity</h1>
+        <p>Discover nearby courts for your favourite outdoor sports and their general availability.</p>
+        <p>Let the games begin.</p>
+        <div class="get-started" onclick="modalUIClose();">Get Started</div>
     </div>
     <div id="help"> </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
-<script>modalUI();</script>
+<script>modalUIOpen();</script>
 </body>
 </html>

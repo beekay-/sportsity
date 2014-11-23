@@ -9,9 +9,9 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-size: 1em;
-    font-weight: 400;
+    font-weight: 300;
     color: rgb(68, 68, 68);
     height: 100%;
     margin: 0;
@@ -87,6 +87,34 @@ body {
     height: 100%;
     width: 100%;
 }
+h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5em;
+    padding-bottom: 1em;
+}
+p {
+    text-align: center;
+    padding-bottom: 1em;
+    font-weight: 300;
+}
+.get-started {
+    border: 2px solid rgb(0, 122, 40);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: rgb(0, 171, 56);
+    padding: 16px;
+    width: 200px;
+    font-weight: 500;
+    margin: 18px 5px 5px 5px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+.get-started:hover {
+    background: #04b941;
+    cursor: pointer;
+}
 
 /* MEDIA QUERIES */
 
@@ -115,6 +143,34 @@ body {
 .animated.hinge {
   -webkit-animation-duration: 2s;
           animation-duration: 2s;
+}
+@-webkit-keyframes bounceInDown {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -3000px, 0);
+            transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+            transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+            transform: translate3d(0, 5px, 0);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 @keyframes bounceInDown {
   0%, 60%, 75%, 90%, 100% {
@@ -293,22 +349,20 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 .ui-dialog .ui-dialog-titlebar {
     padding: .4em 1em;
     position: relative;
+    display: none;
 }
 .ui-dialog .ui-dialog-title {
     float: left;
-    font-weight: 600;
-    font-size: 1.1em;
     white-space: nowrap;
     width: 90%;
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: none;
 }
 .ui-dialog .ui-dialog-titlebar-close {
     position: absolute;
-    right: 0.5em;
+    right: 0.3em;
     top: 50%;
     width: 20px;
-    margin: -8px 0 0 0;
     padding: 1px;
     height: 20px;
 }

@@ -22,9 +22,13 @@ function initialize() {
     google.maps.event.addDomListener(window, 'load', initialize);
 }
 
-function modalUI() {
+function modalUIOpen() {
 	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: '275', height: '275', resizable: false, closeOnEscape: true, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
     var optionsHelp = {show: {effect: "bounce", duration: 1000}, modal: true, width: '275', height: '275', resizable: false, closeOnEscape: true, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#help').dialog('close');})} };
     $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
 	$('.open-help').click(function() { $('#help').dialog(optionsHelp).dialog('open'); });
+}
+
+function modalUIClose() {
+    $('#about').dialog('close');   
 }
