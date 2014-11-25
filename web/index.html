@@ -10,7 +10,6 @@
 <meta name="apple-mobile-web-app-title" content="Sportsity">
 <title>Sportsity &#9679; Let the Games Begin</title>
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500" type="text/css">
 <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/loadscrn-iphone6.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/loadscrn-iphone6p.png" />
@@ -20,7 +19,6 @@
 <script src="js/maps.js"></script>
 </head>
 <body onload="initialize();">
-<!--Menu-->
     <div id="menu">
         <div class="ui sportsity animated bounceInDown">
             <img class="open-about" src="img/sportsity-logo.png" alt="Sportsity" width="100" height="45" />
@@ -34,11 +32,18 @@
         <div class="ui help animated bounceInDown"> 
             <img class="icon open-help" src="img/help.png" alt="Help" title="Help" width="24" height="24" />
         </div>
-        <div class="ui dropdown animated bounceInDown"></div>
+        <div class="ui dropdown animated bounceInDown">
+            <select id="selectbox1">
+                <option value="">Choose Your Sport</option>
+                <option value="tennis">Tennis</option>
+                <option value="soccer">Soccer</option>
+                <option value="basketball">Basketball</option>
+                <option value="football">Football</option>
+                <option value="Baseball">Baseball</option>
+            </select>
+        </div>
     </div>
-<!--Map-->
 	<div id="map-canvas"> </div>
-<!--About & Help-->
     <div id="about"> 
         <h1>Welcome to Sportsity</h1>
         <p>Discover nearby courts for your favourite outdoor sports and their general availability.</p>
@@ -47,8 +52,8 @@
     </div>
     <div id="help"> </div>
 <script src="js/jquery.min.js"></script>
+<script src="js/custom-select.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.ui.touch-punch.min.js"></script>
 <script>modalUIOpen();</script>
 </body>
 </html>
