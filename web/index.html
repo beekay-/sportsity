@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="sports, sportsity, web mapping, freaky developers, google maps, api" />
-<meta name="description" content="" />
+<!--<meta name="description" content="Discover nearby courts for your favourite outdoor sports and their general availability." />-->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -23,14 +23,11 @@
         <div class="ui sportsity animated bounceInDown">
             <img class="open-about" src="img/sportsity-logo.png" alt="Sportsity" width="100" height="45" />
         </div>
-        <div id="geolocate" class="ui location animated bounceInDown" onclick="getLocation();"> 
+        <div id="geolocate" class="ui location animated bounceInDown" onclick="getUserLocation();"> 
             <img class="icon" src="img/arrow.png" alt="Locate" title="Locate Me" width="24" height="24" />
         </div>
         <div class="ui vote animated bounceInDown"> 
             <img class="icon" src="img/vote.png" alt="Vote" title="Vote for Next City" width="24" height="24" />
-        </div>
-        <div class="ui help animated bounceInDown"> 
-            <img class="icon open-help" src="img/help.png" alt="Help" title="Help" width="24" height="24" />
         </div>
         <div class="ui dropdown animated bounceInDown">
             <select id="selectbox1">
@@ -51,10 +48,8 @@
         <p>Discover nearby courts for your favourite outdoor sports and their general availability.</p>
         <p>Let the games begin.</p>
         <div class="get-started" onclick="modalUIClose();">Get Started</div>
-    </div>
-    <div id="info"> 
-        <p>Copyright &copy; 2014 Sportsity. Designed and developed by <a href="www.bilalkarim.com" target="_blank">Bilal Karim</a> and <a href="www.kamberov.me" target="_blank">Rustam Kamberov.</a></p>
-        <p>Location data in this application has been made available and modified through the <a href="https://data.calgary.ca">City of Calgary Open Data Catalogue</a>. Availability listed for each courts are not presented as real-time. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
+        <p class="about">Copyright &copy; 2014 Sportsity. Designed and developed by <a href="http://bilalkarim.com" target="_blank">Bilal Karim</a> and <a href="http://kamberov.me" target="_blank">Rustam Kamberov.</a></p>
+        <p class="notice">Data in this application has been made available and modified through the <a href="https://data.calgary.ca">City of Calgary Open Data Catalogue</a>. Availability of courts are not presented in real-time. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
     </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/custom-select.js"></script>
