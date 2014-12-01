@@ -52,7 +52,19 @@ $('select').each(function () {
         $styledSelect.text($(this).text()).removeClass('active');
         $this.val($(this).attr('rel'));
         $list.hide();
-        /* alert($this.val()); Uncomment this for demonstration! */
+        if ($this.val() == 'tennis') {
+            getTennisLocations();  
+        } else if ($this.val() == 'soccer') {
+            getSoccerLocations();
+        } else if ($this.val() == 'basketball') {
+            getBasketballLocations();
+        } else if ($this.val() == 'football') {
+            getFootballLocations();
+        } else if ($this.val() == 'baseball') {
+            getBaseballLocations();
+        } else if ($this.val() == 'cricket') {
+            getCricketLocations();
+        }
     });
 
     // Hides the unordered list when clicking outside of it
