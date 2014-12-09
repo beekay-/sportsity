@@ -7,12 +7,6 @@
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 300;
-  src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v14/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   src: local('Roboto Regular'), local('Roboto-Regular'), url(http://fonts.gstatic.com/s/roboto/v14/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
 }
@@ -29,7 +23,7 @@ html {
 body {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 400;
     color: rgb(68, 68, 68);
     height: 100%;
     margin: 0;
@@ -70,7 +64,7 @@ body {
     text-align: left;
 }
 .sportsity {
-    width: 100px;
+    width: 105px;
     background: rgb(0, 171, 56);
 }
 .icon {
@@ -111,15 +105,17 @@ h1 {
 p {
     text-align: center;
     padding-bottom: 1em;
-    font-weight: 300;
+    font-weight: 400;
     white-space: pre-wrap;
     line-height: 150%;
 }
 .about {
     font-size: 0.750em;
 }
-.notice {
+.notice, .contact {
     font-size: 0.625em;
+}
+.contact {
     padding-bottom: 1.5em;
 }
 .get-started {
