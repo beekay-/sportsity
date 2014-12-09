@@ -1,5 +1,6 @@
 // GLOBAL VARIABLES
 var map;
+var yyc = new google.maps.LatLng(51.0603246, -114.0581015);
 var iterator = 0;
 var i = 0;
 // TENNIS
@@ -60,7 +61,7 @@ function initialize() {
     var mapOptions = {
     zoom: 11,
     minZoom: 10,
-    center: new google.maps.LatLng(51.0453246, -114.0581015),
+    center: yyc,
     panControl: false,
     mapTypeControl: false,
     zoomControl: false,
@@ -75,6 +76,24 @@ function initialize() {
         if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
             map.setZoom(11);
         }
+    var lineSymbol = {
+        path: 'M 0,-2 0,2',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        strokeColor: "#f70202",
+        scale: 1
+    };
+    var lineCoordinates = [new google.maps.LatLng(51.182786,-114.233093),new google.maps.LatLng(51.182786,-113.911743),new google.maps.LatLng(50.950641,-113.911743),new google.maps.LatLng(50.950641,-113.888397),new google.maps.LatLng(50.950641,-113.887711),new google.maps.LatLng(50.928141,-113.887711),new google.maps.LatLng(50.928141,-113.911743),new google.maps.LatLng(50.855809,-113.911743),new google.maps.LatLng(50.855879,-113.997574),new google.maps.LatLng(50.878777,-113.997574),new google.maps.LatLng(50.878777,-114.093704),new google.maps.LatLng(50.890907,-114.093704),new google.maps.LatLng(50.890907,-114.213181),new google.maps.LatLng(50.920783,-114.213181),new google.maps.LatLng(50.920783,-114.139709),new google.maps.LatLng(50.981776,-114.139709),new google.maps.LatLng(50.981776,-114.165115),new google.maps.LatLng(50.996904,-114.165115),new google.maps.LatLng(50.996904,-114.140396),new google.maps.LatLng(51.008138,-114.140396),new google.maps.LatLng(51.008138,-114.236526),new google.maps.LatLng(51.081528,-114.236526),new google.maps.LatLng(51.081528,-114.275665),new google.maps.LatLng(51.104384,-114.275665),new google.maps.LatLng(51.104384,-114.257126),new google.maps.LatLng(51.154370,-114.257126),new google.maps.LatLng(51.154370,-114.233780),new google.maps.LatLng(51.182786,-114.234467)];
+    var line = new google.maps.Polyline({
+        path: lineCoordinates,
+        strokeOpacity: 0,
+        icons: [{
+            icon: lineSymbol,
+            offset: '0',
+            repeat: '10px'
+        }],
+        map: map
+    });
 }
 
 function modalUIOpen() {
