@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 var map;
-var yyc = new google.maps.LatLng(51.0603246, -114.0581015);
+var yyc = new google.maps.LatLng(51.0453246, -114.0581015);
 var iterator = 0;
 var i = 0;
 // TENNIS
@@ -97,8 +97,17 @@ function initialize() {
 }
 
 function modalUIOpen() {
-	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: 295, height: 'auto', resizable: false, closeOnEscape: true, hide: { effect: "fade", duration: 200 }, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
+	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: 300, height: 'auto', resizable: false, closeOnEscape: true, hide: { effect: "fade", duration: 200 }, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
     $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
+    $(document).ready(function() { 
+        var obj = document.createElement("audio"); 
+        obj.setAttribute("src", "audio/tap.ogg");
+        //$.get(); 
+
+        $(".sound").click(function() { 
+            obj.play(); 
+        }); 
+    });
 }
 
 function modalUIClose() {
@@ -379,6 +388,6 @@ function addCricketMarkers(i) {
         animation: google.maps.Animation.DROP
     }));
     iterator++;
-}
+} 
 
 google.maps.event.addDomListener(window, 'load', initialize);
