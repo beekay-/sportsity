@@ -65,10 +65,6 @@ function initialize() {
     panControl: false,
     mapTypeControl: false,
     zoomControl: false,
-    zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL,
-        position: google.maps.ControlPosition.RIGHT_BOTTOM
-    },
     streetViewControl: false
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -94,6 +90,52 @@ function initialize() {
         }],
         map: map
     });
+    var zoomControlDiv = document.createElement('div');
+    var zoomControlButton = new zoomControl(zoomControlDiv, map);
+    zoomControlDiv.index = 1;
+    zoomControlDiv.className = "zoom-buttons animated bounceInUp";
+    map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
+}
+
+function zoomControl(controlDiv, map) {
+    controlDiv.style.padding = '0 0 35px 0';
+    var controlWrapper = document.createElement('div');
+    controlWrapper.style.backgroundColor = 'white';
+    controlWrapper.style.cursor = 'pointer';
+    controlWrapper.style.textAlign = 'center';
+    controlWrapper.style.width = '72px'; 
+    controlWrapper.style.height = '34px';
+    controlWrapper.style.boxShadow = "0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15)";
+    controlWrapper.style.borderRadius = "3px";
+    controlDiv.appendChild(controlWrapper);
+
+    var zoomInButton = document.createElement('div');
+    zoomInButton.style.width = '32px'; 
+    zoomInButton.style.height = '32px';
+    zoomInButton.style.cssFloat = 'right';
+    zoomInButton.style.backgroundSize = '32px 32px';
+    zoomInButton.style.backgroundImage = 'url("img/zoom-in.png")';
+    zoomInButton.style.borderLeft = '1px';
+    zoomInButton.style.borderLeftColor = '#dcdcdc';
+    zoomInButton.style.borderLeftStyle = "solid";
+    zoomInButton.style.padding = "0 2px";
+    controlWrapper.appendChild(zoomInButton);
+
+    var zoomOutButton = document.createElement('div');
+    zoomOutButton.style.width = '32px'; 
+    zoomOutButton.style.height = '32px';
+    zoomOutButton.style.cssFloat = 'left';
+    zoomOutButton.style.backgroundSize = '32px 32px';
+    zoomOutButton.style.backgroundImage = 'url("img/zoom-out.png")';
+    controlWrapper.appendChild(zoomOutButton);
+
+    google.maps.event.addDomListener(zoomInButton, 'click', function() {
+        map.setZoom(map.getZoom() + 1);
+    });
+
+    google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+        map.setZoom(map.getZoom() - 1);
+    });  
 }
 
 function modalUIOpen() {
@@ -101,7 +143,7 @@ function modalUIOpen() {
     $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
     $(document).ready(function() { 
         var obj = document.createElement("audio"); 
-        obj.setAttribute("src", "audio/tap.ogg");
+        obj.setAttribute("src", "audio/tap.mp3");
         //$.get(); 
 
         $(".sound").click(function() { 

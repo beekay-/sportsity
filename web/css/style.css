@@ -25,7 +25,7 @@ body {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-size: 1em;
     font-weight: 400;
-    color: rgb(68, 68, 68);
+    color: rgb(80, 80, 80);
     height: 100%;
     margin: 0;
     padding: 0;
@@ -92,6 +92,12 @@ body {
     flex: 1;
     -webkit-animation-delay: 1.3s;
     animation-delay: 1.3s;
+}
+.zoom-buttons {
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 #map-canvas {
     height: 100%;
@@ -241,6 +247,10 @@ a:hover, a:active {
         -webkit-animation-delay: 1.2s;
         animation-delay: 1.2s;
     }
+    .zoom-buttons {
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s;
+    }
 }
 
 /* ANIMATE CSS — http://daneden.me/animate */
@@ -288,36 +298,96 @@ a:hover, a:active {
   }
 }
 @keyframes bounceInDown {
-  0%, 60%, 75%, 90%, 100% {
-    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    0%, 60%, 75%, 90%, 100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
             transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -3000px, 0);
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
             transform: translate3d(0, -3000px, 0);
-  }
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 25px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
             transform: translate3d(0, 25px, 0);
-  }
-  75% {
-    -webkit-transform: translate3d(0, -10px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
             transform: translate3d(0, -10px, 0);
-  }
-  90% {
-    -webkit-transform: translate3d(0, 5px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
             transform: translate3d(0, 5px, 0);
-  }
-  100% {
-    -webkit-transform: none;
+    }
+    100% {
+        -webkit-transform: none;
             transform: none;
-  }
+    }
 }
 .bounceInDown {
-  -webkit-animation-name: bounceInDown;
-          animation-name: bounceInDown;
+    -webkit-animation-name: bounceInDown;
+        animation-name: bounceInDown;
+}
+@-webkit-keyframes bounceInUp {
+    0%, 60%, 75%, 90%, 100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+            transform: translate3d(0, 3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+            transform: translate3d(0, 10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+            transform: translate3d(0, -5px, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes bounceInUp {
+    0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+            transform: translate3d(0, 3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+            transform: translate3d(0, 10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+            transform: translate3d(0, -5px, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    }
+}
+.bounceInUp {
+  -webkit-animation-name: bounceInUp;
+          animation-name: bounceInUp;
 }
 
 /* JQUERY UI */ 
