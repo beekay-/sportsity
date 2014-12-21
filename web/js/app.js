@@ -60,7 +60,8 @@ var cricketMarker;
 function initialize() {
     var mapOptions = {
     zoom: 11,
-    minZoom: 10,
+    minZoom: 11,
+    maxZoom: 14,
     center: yyc,
     panControl: false,
     mapTypeControl: false,
@@ -151,12 +152,29 @@ function zoomControl(controlDiv, map) {
 }
 
 function getUserLocation() {
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-            map.setZoom(14);
-            map.setCenter(userLocation);
-        }); 
+    if (navigator.geolocation) {
+        var userLocationMarker = null;
+         navigator.geolocation.getCurrentPosition(
+            function(position) {
+                userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                if (userLocationMarker) {
+                    return;
+                }
+                map.setZoom(14);
+                map.setCenter(userLocation);
+                userLocationMarker = new google.maps.Marker({
+                    position: userLocation,
+                    map: map,
+                    animation: google.maps.Animation.BOUNCE
+                });
+            },
+            function(error) {
+                alert("Sorry, something went wrong. Please try again.", error);
+            }, {
+                timeout: (5 * 1000),
+                maximumAge: (1000 * 60 * 15),
+                enableHighAccuracy: false
+            }); 
     } else {
         alert("Sorry, geolocation is not supported by your browser.");
     }
