@@ -95,10 +95,22 @@ function initialize() {
     zoomControlDiv.index = 1;
     zoomControlDiv.className = "zoom-buttons animated bounceInUp";
     map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
+    
+    $(document).ready(function() {
+        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(250); });
+        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(250); });
+        /*var obj = document.createElement("audio"); 
+        obj.setAttribute("src", "audio/tap.mp3");
+        //$.get(); 
+
+        $(".sound").click(function() { 
+            obj.play(); 
+        });*/
+    });
 }
 
 function zoomControl(controlDiv, map) {
-    controlDiv.style.padding = '0 0 35px 0';
+    controlDiv.style.padding = '0 0 20px 0';
     var controlWrapper = document.createElement('div');
     controlWrapper.style.backgroundColor = 'white';
     controlWrapper.style.cursor = 'pointer';
@@ -107,6 +119,7 @@ function zoomControl(controlDiv, map) {
     controlWrapper.style.height = '34px';
     controlWrapper.style.boxShadow = "0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15)";
     controlWrapper.style.borderRadius = "3px";
+    controlWrapper.style.zIndex = '99';
     controlDiv.appendChild(controlWrapper);
 
     var zoomInButton = document.createElement('div');
@@ -132,28 +145,9 @@ function zoomControl(controlDiv, map) {
     google.maps.event.addDomListener(zoomInButton, 'click', function() {
         map.setZoom(map.getZoom() + 1);
     });
-
     google.maps.event.addDomListener(zoomOutButton, 'click', function() {
         map.setZoom(map.getZoom() - 1);
     });  
-}
-
-function modalUIOpen() {
-	var options = {show: {effect: "bounce", duration: 1000}, modal: true, width: 300, height: 'auto', resizable: false, closeOnEscape: true, hide: { effect: "fade", duration: 200 }, open: function() {jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#about').dialog('close');})} };
-    $('.open-about').click(function() { $('#about').dialog(options).dialog('open'); });
-    $(document).ready(function() { 
-        var obj = document.createElement("audio"); 
-        obj.setAttribute("src", "audio/tap.mp3");
-        //$.get(); 
-
-        $(".sound").click(function() { 
-            obj.play(); 
-        }); 
-    });
-}
-
-function modalUIClose() {
-    $('#about').dialog('close');
 }
 
 function getUserLocation() {
@@ -164,7 +158,7 @@ function getUserLocation() {
             map.setCenter(userLocation);
         }); 
     } else {
-        alert("Sorry, geolocation not supported by your browser.");
+        alert("Sorry, geolocation is not supported by your browser.");
     }
 }
 
@@ -195,7 +189,7 @@ function getTennisLocations() {
         }  
     }
     for (var i = 0; i < tennisMarkersList.length; i++) {
-        setTimeout(addTennisMarkers.bind(this, i), i * 50);
+        setTimeout(addTennisMarkers.bind(this, i), i * 150);
     }
 }
 
@@ -239,7 +233,7 @@ function getSoccerLocations() {
         }  
     }
     for (var i = 0; i < soccerMarkersList.length; i++) {
-        setTimeout(addSoccerMarkers.bind(this, i), i * 50);
+        setTimeout(addSoccerMarkers.bind(this, i), i * 150);
     }
 }
 
@@ -283,7 +277,7 @@ function getBasketballLocations() {
         }  
     }
     for (var i = 0; i < basketballMarkersList.length; i++) {
-        setTimeout(addBasketballMarkers.bind(this, i), i * 50);
+        setTimeout(addBasketballMarkers.bind(this, i), i * 150);
     }
 }
 
@@ -327,7 +321,7 @@ function getFootballLocations() {
         }  
     }
     for (var i = 0; i < footballMarkersList.length; i++) {
-        setTimeout(addFootballMarkers.bind(this, i), i * 50);
+        setTimeout(addFootballMarkers.bind(this, i), i * 150);
     }
 }
 
@@ -371,7 +365,7 @@ function getBaseballLocations() {
         }
     }
     for (var i = 0; i < baseballMarkersList.length; i++) {
-        setTimeout(addBaseballMarkers.bind(this, i), i * 50);
+        setTimeout(addBaseballMarkers.bind(this, i), i * 150);
     }
 }
 
@@ -415,7 +409,7 @@ function getCricketLocations() {
         }
     }
     for (var i = 0; i < cricketMarkersList.length; i++) {
-        setTimeout(addCricketMarkers.bind(this, i), i * 50);
+        setTimeout(addCricketMarkers.bind(this, i), i * 150);
     }
 }
 
