@@ -1,8 +1,27 @@
 // GLOBAL VARIABLES
 var map;
 var yyc = new google.maps.LatLng(51.0453246, -114.0581015);
-var iterator = 0;
 var i = 0;
+var boxText = document.createElement("div");
+boxText.innerHTML = 
+    '<div class="location-bg">' + 
+    '<div class="location-name">Britannia Park</div>';
+var myOptions = {
+    content: boxText,
+    disableAutoPan: false,
+    alignBottom: true,
+    pixelOffset: new google.maps.Size(-126, -53),
+    zIndex: null,
+    infoBoxClearance: new google.maps.Size(1, 1),
+    isHidden: false,
+    pane: "floatPane",
+    enableEventPropagation: false
+};
+var infoBubble = new InfoBox(myOptions);
+var currentID = 0;
+var uniqueID = function () {
+	return ++currentID;
+}
 // TENNIS
 var tennisMarkersList = [
     {latLng: [51.104875, -113.972034]},
@@ -212,16 +231,30 @@ function getTennisLocations() {
 }
 
 function addTennisMarkers(i) {
+    var tennisID = uniqueID();
     var data = tennisMarkersList[i];
     var latLng = new google.maps.LatLng(data.latLng[0], data.latLng[1]);
-    tennisMarkers.push(new google.maps.Marker({
+    var tennisMarker = new google.maps.Marker({
         position: latLng,
         map: map,
         draggable: false,
-        title: "Tennis Court",
+        title: "Tennis Court #" + tennisID,
         animation: google.maps.Animation.DROP
-    }));
-    iterator++;
+    });
+    tennisMarkers.push(tennisMarker);
+    
+    var contentString = '<div>Tennis Court #' + tennisID + '</div>';
+    
+    google.maps.event.addListener(tennisMarker, 'click', function () {
+        if (infoBubble) {
+            infoBubble.close();   
+        }
+        //infoWindow.setContent(contentString);
+        infoBubble.open(map,tennisMarker); 
+    });
+    google.maps.event.addListener(map, 'click', function () {
+       infoBubble.close(); 
+    });
 }
 
 function getSoccerLocations() {
