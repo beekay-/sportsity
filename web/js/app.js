@@ -4,8 +4,13 @@ var yyc = new google.maps.LatLng(51.0453246, -114.0581015);
 var i = 0;
 var boxText = document.createElement("div");
 boxText.innerHTML = 
-    '<div class="location-bg">' + 
-    '<div class="location-name">Britannia Park</div>';
+    '<div class="location-mask">' +
+        '<div class="location-bg">' +
+            '<span class="location-name">Britannia Park</span>' + 
+            '<span class="location-courts">4 Courts</span>' +
+            '<a href="comgooglemaps://?daddr=51.104875,-113.972034&zoom=18&views=satellite,traffic"><span class="location-route">Route</span></a>' +
+    '</div></div>' +
+    '<div class="availability">Availability</div>';
 var myOptions = {
     content: boxText,
     disableAutoPan: false,
@@ -94,7 +99,7 @@ function initialize() {
         }
     var lineSymbol = {
         path: 'M 0,-2 0,2',
-        strokeOpacity: 0.8,
+        strokeOpacity: 0.85,
         strokeWeight: 2,
         strokeColor: "#f70202",
         scale: 1
