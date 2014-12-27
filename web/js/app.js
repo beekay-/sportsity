@@ -5,11 +5,11 @@ var i = 0;
 var boxText = document.createElement("div");
 boxText.innerHTML = 
     '<div class="location-mask">' +
-        '<div class="location-bg">' +
-            '<span class="location-name">Britannia Park</span>' + 
-            '<span class="location-courts">4 Courts</span>' +
-            '<a class="location-route" href="comgooglemaps://?daddr=51.104875,-113.972034&zoom=18&views=satellite,traffic"><img src="img/directions.png" width="32" height="32" alt="Directions"/></a>' +
-    '</div></div>' +
+        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/directions.png" width="32" height="32" alt="Directions"/></a>' +
+        '<span class="location-name">Britannia Park</span>' + 
+        '<span class="location-courts">4 Courts</span>' +
+        '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
+    '</div>' +
     '<div class="availability">Availability</div>';
 var myOptions = {
     content: boxText,
@@ -29,7 +29,7 @@ var uniqueID = function () {
 }
 // TENNIS
 var tennisMarkersList = [
-    {latLng: [51.104875, -113.972034]},
+    {latLng: [51.104741, -113.972019]},
     {latLng: [51.099080, -113.928958]},
     {latLng: [51.062156, -114.023924]},
     {latLng: [51.076624, -114.137456]},

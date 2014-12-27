@@ -196,6 +196,7 @@ a:hover, a:active {
     position: relative;
     color: rgb(68, 68, 68);
     font-weight: 400;
+    height: 45px;
 }
 .styledSelect {
     position: absolute;
@@ -264,7 +265,7 @@ a:hover, a:active {
 /* INFO BOX */
 
 .infoBox {
-    height: 160px;
+    height: 162px;
     width: 240px;
     margin-top: 8px;
 }
@@ -272,6 +273,8 @@ a:hover, a:active {
     content: "";
     position: absolute;
     left: 105px;
+    outline: 1px solid transparent;
+    backface-visibility: hidden;
     top: 150px;
     border-style: solid;
     border-width: 32px 16px 0;
@@ -285,16 +288,46 @@ a:hover, a:active {
     width: 240px;
     overflow: hidden;
     border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    -webkit-transform: translate3d(0,0,0);
+}
+.shadow {
+    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    z-index: 9999;
+}
+.shadow > img {
+    display: block;
+    z-index: -1;
+    position: relative;
+    animation: satellitize 600s infinite;
+    -webkit-animation: satellitize 600s infinite;
+}
+@keyframes satellitize {
+    0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }
+    100% { transform: rotate(-340deg); -webkit-transform: rotate(-340deg); }
+}
+@-webkit-keyframes satellitize {
+    0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }
+    100% { transform: rotate(-340deg); -webkit-transform: rotate(-340deg); }
 }
 .location-bg {
-    height: 123px;
-    width: 270px;
-    margin: -30px 0 0 -22px;
-    background: #000;
-    border-bottom: 4px solid rgb(0, 168, 255);
+    margin: -74px 0 0 -24px;
+    border-bottom: 3px solid rgb(0, 168, 255);
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    outline: 1px solid transparent;
+    -webkit-transform: translate3d(0,0,0);
+    z-index: -1;
+    overflow: hidden;
+    width: 270px;
+    height: 120px;
+    float: left;
 }
 .location-name, .location-courts, .location-route {
     font-size: 1.250em;
@@ -303,31 +336,29 @@ a:hover, a:active {
     display: block;
     padding: 14px;
     text-align: left;
-    transform: rotate(15deg);
-    -webkit-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    padding: 42px 0 0 44px;
+    padding: 12px 0 0 12px;
+    z-index: 1;
+    position: relative;
 }
 .location-route {
-    color: #000;
-    height: 14px;
-    margin: -11px 8px 0 0;
-    padding: 9px;
+    height: 32px;
     width: 36px;
     cursor: pointer;
     float: right;
+    z-index: 99;
+    right: 6px;
 }
 .location-route:hover {
     background: none;   
 }
 .location-courts {
     font-size: 1em;
-    padding: 5px 0 0 35px;
+    padding: 6px 0 0 12px;
 }
 .availability {
     font-size: 1.125em;
     text-align: left;
-    padding: 0 14px;
+    padding: 0 12px;
 }
 
 /* MEDIA QUERIES */
