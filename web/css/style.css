@@ -194,7 +194,7 @@ a:hover, a:active {
 .select {
     cursor: pointer;
     position: relative;
-    color: rgb(68, 68, 68);
+    color: rgb(80, 80, 80);
     font-weight: 400;
     height: 45px;
 }
@@ -210,12 +210,11 @@ a:hover, a:active {
 }
 .styledSelect:after {
     content: "";
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: rgb(68, 68, 68) transparent transparent transparent;
+    width: 24px;
+    height: 18px;
+    background: url('../img/ui/arrow-dropdown.png') no-repeat center center;
+    background-size: 24px 24px;
     position: absolute;
-    top: 20px;
     right: 14px;
 }
 .styledSelect:active, .styledSelect.active {
@@ -302,8 +301,8 @@ a:hover, a:active {
     display: block;
     z-index: -1;
     position: relative;
-    animation: satellitize 600s infinite;
-    -webkit-animation: satellitize 600s infinite;
+    animation: satellitize 500s infinite;
+    -webkit-animation: satellitize 500s infinite;
 }
 @keyframes satellitize {
     0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }
@@ -315,18 +314,14 @@ a:hover, a:active {
 }
 .location-bg {
     margin: -74px 0 0 -24px;
-    border-bottom: 3px solid rgb(0, 168, 255);
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     outline: 1px solid transparent;
-    -webkit-transform: translate3d(0,0,0);
     z-index: -1;
     overflow: hidden;
     width: 270px;
-    height: 120px;
+    height: 125px;
     float: left;
 }
 .location-name, .location-courts, .location-route {

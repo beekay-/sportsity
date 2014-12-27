@@ -5,7 +5,7 @@ var i = 0;
 var boxText = document.createElement("div");
 boxText.innerHTML = 
     '<div class="location-mask">' +
-        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/directions.png" width="32" height="32" alt="Directions"/></a>' +
+        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
         '<span class="location-name">Britannia Park</span>' + 
         '<span class="location-courts">4 Courts</span>' +
         '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
@@ -121,7 +121,7 @@ function initialize() {
     zoomControlDiv.className = "zoom-buttons animated bounceInUp";
     map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
     
-    $(document).ready(function() {
+    (function($) {
         $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(250); });
         $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(250); });
         /*var obj = document.createElement("audio"); 
@@ -131,7 +131,7 @@ function initialize() {
         $(".sound").click(function() { 
             obj.play(); 
         });*/
-    });
+    }(jQuery));
 }
 
 function zoomControl(controlDiv, map) {
@@ -140,7 +140,7 @@ function zoomControl(controlDiv, map) {
     controlWrapper.style.backgroundColor = 'white';
     controlWrapper.style.cursor = 'pointer';
     controlWrapper.style.textAlign = 'center';
-    controlWrapper.style.width = '72px'; 
+    controlWrapper.style.width = '65px'; 
     controlWrapper.style.height = '34px';
     controlWrapper.style.boxShadow = "0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15)";
     controlWrapper.style.borderRadius = "3px";
@@ -152,11 +152,11 @@ function zoomControl(controlDiv, map) {
     zoomInButton.style.height = '32px';
     zoomInButton.style.cssFloat = 'right';
     zoomInButton.style.backgroundSize = '32px 32px';
-    zoomInButton.style.backgroundImage = 'url("img/zoom-in.png")';
+    zoomInButton.style.backgroundImage = 'url("img/ui/zoom-in.png")';
+    zoomInButton.style.backgroundRepeat = 'no-repeat';
     zoomInButton.style.borderLeft = '1px';
     zoomInButton.style.borderLeftColor = '#dcdcdc';
     zoomInButton.style.borderLeftStyle = "solid";
-    zoomInButton.style.padding = "0 2px";
     controlWrapper.appendChild(zoomInButton);
 
     var zoomOutButton = document.createElement('div');
@@ -164,7 +164,8 @@ function zoomControl(controlDiv, map) {
     zoomOutButton.style.height = '32px';
     zoomOutButton.style.cssFloat = 'left';
     zoomOutButton.style.backgroundSize = '32px 32px';
-    zoomOutButton.style.backgroundImage = 'url("img/zoom-out.png")';
+    zoomOutButton.style.backgroundImage = 'url("img/ui/zoom-out.png")';
+    zoomOutButton.style.backgroundRepeat = 'no-repeat';
     controlWrapper.appendChild(zoomOutButton);
 
     google.maps.event.addDomListener(zoomInButton, 'click', function() {
