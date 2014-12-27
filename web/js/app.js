@@ -8,7 +8,7 @@ boxText.innerHTML =
         '<div class="location-bg">' +
             '<span class="location-name">Britannia Park</span>' + 
             '<span class="location-courts">4 Courts</span>' +
-            '<a href="comgooglemaps://?daddr=51.104875,-113.972034&zoom=18&views=satellite,traffic"><span class="location-route">Route</span></a>' +
+            '<a class="location-route" href="comgooglemaps://?daddr=51.104875,-113.972034&zoom=18&views=satellite,traffic"><img src="img/directions.png" width="32" height="32" alt="Directions"/></a>' +
     '</div></div>' +
     '<div class="availability">Availability</div>';
 var myOptions = {
@@ -303,7 +303,6 @@ function addSoccerMarkers(i) {
         title: "Soccer Field",
         animation: google.maps.Animation.DROP
     }));
-    iterator++;
 }
 
 function getBasketballLocations() {
@@ -347,7 +346,6 @@ function addBasketballMarkers(i) {
         title: "Basketball Court",
         animation: google.maps.Animation.DROP
     }));
-    iterator++;
 }
 
 function getFootballLocations() {
@@ -391,7 +389,6 @@ function addFootballMarkers(i) {
         title: "Football Field",
         animation: google.maps.Animation.DROP
     }));
-    iterator++;
 }
 
 function getBaseballLocations() {
@@ -435,7 +432,6 @@ function addBaseballMarkers(i) {
         title: "Basketball Court",
         animation: google.maps.Animation.DROP
     }));
-    iterator++;
 }
 
 function getCricketLocations() {
@@ -479,7 +475,6 @@ function addCricketMarkers(i) {
         title: "Cricket Field",
         animation: google.maps.Animation.DROP
     }));
-    iterator++;
 } 
 
 google.maps.event.addDomListener(window, 'load', initialize);

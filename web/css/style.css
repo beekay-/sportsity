@@ -34,7 +34,7 @@ body {
     position: absolute;
     z-index: 99;
     width: 100%;
-    max-width: 1280px;
+    /*max-width: 1280px;*/
     display: -webkit-box;
     display: -moz-box-flex;
     display: -webkit-flex;
@@ -291,7 +291,7 @@ a:hover, a:active {
     width: 270px;
     margin: -30px 0 0 -22px;
     background: #000;
-    border-bottom: 3px solid rgb(0, 168, 255);
+    border-bottom: 4px solid rgb(0, 168, 255);
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
@@ -306,22 +306,19 @@ a:hover, a:active {
     transform: rotate(15deg);
     -webkit-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
-    padding: 44px 0 0 44px;
+    padding: 42px 0 0 44px;
 }
 .location-route {
-    background: #fff;
-    border-radius: 50px;
     color: #000;
     height: 14px;
-    margin: -10px 0 0 24px;
+    margin: -11px 8px 0 0;
     padding: 9px;
-    text-align: left;
     width: 36px;
     cursor: pointer;
+    float: right;
 }
 .location-route:hover {
-    background: rgb(0, 171, 56);
-    color: rgb(255, 255, 255);
+    background: none;   
 }
 .location-courts {
     font-size: 1em;
