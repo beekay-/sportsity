@@ -10,12 +10,12 @@ boxText.innerHTML =
         '<span class="location-courts">4 Courts</span>' +
         '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
     '</div>' +
-    '<div class="availability">Availability</div>';
+    '<span class="availability">Availability</span>' + '<span class="rating"><span class="upvote"></span> <span class="downvote"></span></span>';
 var myOptions = {
     content: boxText,
     disableAutoPan: false,
     alignBottom: true,
-    pixelOffset: new google.maps.Size(-126, -53),
+    pixelOffset: new google.maps.Size(-126, -48),
     zIndex: null,
     infoBoxClearance: new google.maps.Size(1, 1),
     isHidden: false,
@@ -27,6 +27,7 @@ var currentID = 0;
 var uniqueID = function () {
 	return ++currentID;
 }
+
 // TENNIS
 var tennisMarkersList = [
     {latLng: [51.104741, -113.972019]},
@@ -39,6 +40,7 @@ var tennisMarkersList = [
 ];
 var tennisMarkers = [];
 var tennisMarker;
+
 // SOCCER
 var soccerMarkersList = [
     {latLng: [51.073052, -114.016813]},
@@ -49,12 +51,14 @@ var soccerMarkersList = [
 ];
 var soccerMarkers = [];
 var soccerMarker;
+
 // BASKETBALL
 var basketballMarkersList = [
     {latLng: [51.073606, -114.017433]}
 ];
 var basketballMarkers = [];
 var basketballMarker;
+
 // FOOTBALL
 var footballMarkersList = [
     {latLng: [51.0453246, -114.0581012]},
@@ -62,6 +66,7 @@ var footballMarkersList = [
 ];
 var footballMarkers = [];
 var footballMarker;
+
 // BASEBALL
 var baseballMarkersList = [
     {latLng: [51.078811, -113.976824]},
@@ -72,6 +77,7 @@ var baseballMarkersList = [
 ];
 var baseballMarkers = [];
 var baseballMarker;
+
 // CRICKET
 var cricketMarkersList = [
     {latLng: [51.098098, -113.98309]},
@@ -79,6 +85,14 @@ var cricketMarkersList = [
 ];
 var cricketMarkers = [];
 var cricketMarker;
+
+// CUSTOM MARKERS
+var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(32,32));
+var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(32,32));
+var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(32,32));
+var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.png", null, null, null, new google.maps.Size(32,32));
+var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(32,32));
+var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(32,32));
 
 // APP FUNCTIONALITY
 function initialize() {
@@ -244,6 +258,7 @@ function addTennisMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: tennisIcon,
         title: "Tennis Court #" + tennisID,
         animation: google.maps.Animation.DROP
     });
@@ -301,6 +316,7 @@ function addSoccerMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: soccerIcon,
         title: "Soccer Field",
         animation: google.maps.Animation.DROP
     }));
@@ -344,6 +360,7 @@ function addBasketballMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: basketballIcon,
         title: "Basketball Court",
         animation: google.maps.Animation.DROP
     }));
@@ -387,6 +404,7 @@ function addFootballMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: footballIcon,
         title: "Football Field",
         animation: google.maps.Animation.DROP
     }));
@@ -430,6 +448,7 @@ function addBaseballMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: baseballIcon,
         title: "Basketball Court",
         animation: google.maps.Animation.DROP
     }));
@@ -473,6 +492,7 @@ function addCricketMarkers(i) {
         position: latLng,
         map: map,
         draggable: false,
+        icon: cricketIcon,
         title: "Cricket Field",
         animation: google.maps.Animation.DROP
     }));

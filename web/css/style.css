@@ -283,7 +283,7 @@ a:hover, a:active {
     z-index: 1;
 }
 .location-mask {
-    height: 135px;
+    height: 132px;
     width: 240px;
     overflow: hidden;
     border-radius: 3px 3px 0 0;
@@ -301,8 +301,8 @@ a:hover, a:active {
     display: block;
     z-index: -1;
     position: relative;
-    animation: satellitize 500s infinite;
-    -webkit-animation: satellitize 500s infinite;
+    animation: satellitize 400s infinite;
+    -webkit-animation: satellitize 400s infinite;
 }
 @keyframes satellitize {
     0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }
@@ -351,9 +351,49 @@ a:hover, a:active {
     padding: 6px 0 0 12px;
 }
 .availability {
-    font-size: 1.125em;
+    text-transform: uppercase;
     text-align: left;
-    padding: 0 12px;
+    float: left;
+    padding: 6px 12px;
+}
+.rating {
+    float: right;
+    position: relative;
+    right: 10px;
+    width: 36px;
+}
+.upvote, .downvote {
+    cursor: pointer;
+    background: url('../img/ui/smileys.png') no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: 32px 32px;
+    background-position: -16px -0;
+    display: block;
+    float: left;
+    margin: 0 4px 0 0;
+}
+.upvote:hover {
+    background-position: 0 0;   
+}
+.downvote {
+    background-position: -16px -16px;
+    margin: 0;
+}
+.downvote:hover {
+    background-position: 0 -16px;   
+}
+.upvote:active, .downvote:active {
+    animation: votefx 0.3s;
+    -webkit-animation: votefx 0.3s;
+}
+@keyframes votefx {
+    0% { transform: scale(1.5); -webkit-transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(3); -webkit-transform: scale(3); opacity: 0; }
+}
+@-webkit-keyframes votefx {
+    0% { transform: scale(1.5); -webkit-transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(3); -webkit-transform: scale(3); opacity: 0; }
 }
 
 /* MEDIA QUERIES */
