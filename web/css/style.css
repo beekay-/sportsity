@@ -301,8 +301,10 @@ a:hover, a:active {
     display: block;
     z-index: -1;
     position: relative;
+/*
     animation: satellitize 400s infinite;
     -webkit-animation: satellitize 400s infinite;
+*/
 }
 @keyframes satellitize {
     0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }
@@ -350,40 +352,47 @@ a:hover, a:active {
     font-size: 1em;
     padding: 6px 0 0 12px;
 }
-.availability {
+.likability {
     text-transform: uppercase;
     text-align: left;
     float: left;
     padding: 6px 12px;
 }
-.rating {
+.feeling {
     float: right;
     position: relative;
     right: 10px;
-    width: 36px;
+    top: 2px;
+    width: 56px;
 }
-.upvote, .downvote {
+.happy, .meh, .sad {
     cursor: pointer;
     background: url('../img/ui/smileys.png') no-repeat;
     width: 16px;
     height: 16px;
-    background-size: 32px 32px;
-    background-position: -16px -0;
+    background-size: 32px 48px;
+    background-position: 0 0;
     display: block;
     float: left;
     margin: 0 4px 0 0;
 }
-.upvote:hover {
-    background-position: 0 0;   
+.happy:hover {
+    background-position: -16px 0;   
 }
-.downvote {
-    background-position: -16px -16px;
-    margin: 0;
+.meh {
+    background-position: 0 -16px;
 }
-.downvote:hover {
-    background-position: 0 -16px;   
+.meh:hover {
+    background-position: -16px -16px;   
 }
-.upvote:active, .downvote:active {
+.sad {
+    background-position: 0 -32px;
+    margin: 0;   
+}
+.sad:hover {
+    background-position: -16px -32px;
+}
+.happy:active, .meh:active, .sad:active {
     animation: votefx 0.3s;
     -webkit-animation: votefx 0.3s;
 }

@@ -2,27 +2,6 @@
 var map;
 var yyc = new google.maps.LatLng(51.0453246, -114.0581015);
 var i = 0;
-var boxText = document.createElement("div");
-boxText.innerHTML = 
-    '<div class="location-mask">' +
-        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
-        '<span class="location-name">Britannia Park</span>' + 
-        '<span class="location-courts">4 Courts</span>' +
-        '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
-    '</div>' +
-    '<span class="availability">Availability</span>' + '<span class="rating"><span class="upvote"></span> <span class="downvote"></span></span>';
-var myOptions = {
-    content: boxText,
-    disableAutoPan: false,
-    alignBottom: true,
-    pixelOffset: new google.maps.Size(-126, -48),
-    zIndex: null,
-    infoBoxClearance: new google.maps.Size(1, 1),
-    isHidden: false,
-    pane: "floatPane",
-    enableEventPropagation: false
-};
-var infoBubble = new InfoBox(myOptions);
 var currentID = 0;
 var uniqueID = function () {
 	return ++currentID;
@@ -87,12 +66,36 @@ var cricketMarkers = [];
 var cricketMarker;
 
 // CUSTOM MARKERS
-var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(32,32));
-var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(32,32));
-var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(32,32));
-var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.png", null, null, null, new google.maps.Size(32,32));
-var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(32,32));
-var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(32,32));
+var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(27,37));
+var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(27,37));
+var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(27,37));
+var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.png", null, null, null, new google.maps.Size(27,37));
+var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(27,37));
+var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(27,37));
+var userIcon = new google.maps.MarkerImage("img/markers/user-icon.png", null, null, null, new google.maps.Size(27,37));
+
+// POP-UP 
+var boxText = document.createElement("div");
+boxText.innerHTML = 
+    '<div class="location-mask">' +
+        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+        '<span class="location-name">Britannia Park</span>' + 
+        '<span class="location-courts">4 Courts</span>' +
+        '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
+    '</div>' +
+    '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+var myOptions = {
+    content: boxText,
+    disableAutoPan: false,
+    alignBottom: true,
+    pixelOffset: new google.maps.Size(-126, -48),
+    zIndex: null,
+    infoBoxClearance: new google.maps.Size(1, 1),
+    isHidden: false,
+    pane: "floatPane",
+    enableEventPropagation: false
+};
+var infoBubble = new InfoBox(myOptions);
 
 // APP FUNCTIONALITY
 function initialize() {
@@ -199,16 +202,16 @@ function getUserLocation() {
                 if (userLocationMarker) {
                     return;
                 }
-                map.setZoom(14);
                 map.setCenter(userLocation);
                 userLocationMarker = new google.maps.Marker({
                     position: userLocation,
                     map: map,
+                    icon: userIcon,
                     animation: google.maps.Animation.BOUNCE
                 });
             },
             function(error) {
-                alert("Sorry, something went wrong. Please try again.", error);
+                alert("Sorry, something went wrong. Check to see if location services are enabled.", error);
             }, {
                 timeout: (5 * 1000),
                 maximumAge: (1000 * 60 * 15),
