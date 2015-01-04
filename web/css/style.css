@@ -87,7 +87,7 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 .sportsity {
-    width: 105px;
+    width: 100px;
     background: rgb(0, 171, 56);
 }
 .icon {
@@ -210,12 +210,12 @@ a:hover, a:active {
 }
 .styledSelect:after {
     content: "";
-    width: 24px;
+    width: 18px;
     height: 18px;
     background: url('../img/ui/arrow-dropdown.png') no-repeat center center;
     background-size: 24px 24px;
     position: absolute;
-    right: 14px;
+    right: 13px;
 }
 .styledSelect:active, .styledSelect.active {
     background: transparent;
@@ -301,10 +301,8 @@ a:hover, a:active {
     display: block;
     z-index: -1;
     position: relative;
-/*
     animation: satellitize 400s infinite;
     -webkit-animation: satellitize 400s infinite;
-*/
 }
 @keyframes satellitize {
     0% { transform: rotate(340deg); -webkit-transform: rotate(340deg); }

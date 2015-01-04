@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 var map;
-var yyc = new google.maps.LatLng(51.0453246, -114.0581015);
+var yyc = new google.maps.LatLng(51.0433246, -114.0581015);
 var i = 0;
 var currentID = 0;
 var uniqueID = function () {
@@ -72,7 +72,7 @@ var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", 
 var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.png", null, null, null, new google.maps.Size(27,37));
 var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(27,37));
 var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(27,37));
-var userIcon = new google.maps.MarkerImage("img/markers/user-icon.png", null, null, null, new google.maps.Size(27,37));
+var userIcon = new google.maps.MarkerImage("img/markers/user-icon.gif", null, null, null, new google.maps.Size(40,40));
 
 // POP-UP 
 var boxText = document.createElement("div");
@@ -207,7 +207,7 @@ function getUserLocation() {
                     position: userLocation,
                     map: map,
                     icon: userIcon,
-                    animation: google.maps.Animation.BOUNCE
+                    optimized: false
                 });
             },
             function(error) {
