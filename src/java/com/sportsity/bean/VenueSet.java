@@ -37,6 +37,9 @@ public class VenueSet implements Serializable{
      */
     public List<Venue> getVenues() {
         List<Venue> newVenues = new ArrayList<Venue>();
+        venues.stream().forEach((v) -> {
+            newVenues.add(new Venue(v));
+        });
         return newVenues;
     }
 
@@ -45,6 +48,15 @@ public class VenueSet implements Serializable{
      */
     public void setVenues(List<Venue> venues) {
         this.venues = venues;
+    }
+    
+    public String toString(){
+        String s = "";
+        for (Venue venue : venues) {
+            s = s + venue.toString() + "; " + "\n";
+            //System.out.println();
+        }
+        return s;
     }
     
 }

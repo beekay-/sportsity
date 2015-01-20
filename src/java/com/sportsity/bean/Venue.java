@@ -33,6 +33,23 @@ public class Venue implements Serializable{
         this.fields = fields;
     }
     
+    public Venue (Venue aVenue) {
+        if (aVenue == null) {
+            System.exit(0);
+        }
+        this.venueID = aVenue.venueID;
+        this.venue = aVenue.venue;
+        this.latitude = aVenue.latitude;
+        this.longitude = aVenue.longitude;
+        this.venueType = aVenue.venueType;
+        this.fields = aVenue.fields;
+    }
+    
+    public String toString(){
+        return "(" + this.venueID + ", " + this.venue + ", " + this.latitude +
+                ", " + this.longitude + ", " + this.venueType + ", " + this.fields + ")";
+    }    
+    
     /**
      * @return the venueID
      */
@@ -48,14 +65,14 @@ public class Venue implements Serializable{
     }
 
     /**
-     * @return the vanue
+     * @return the venue
      */
     public String getVenue() {
         return venue;
     }
 
     /**
-     * @param vanue the vanue to set
+     * @param venue the vanue to set
      */
     public void setVenue(String venue) {
         this.venue = venue;
