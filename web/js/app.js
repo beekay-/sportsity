@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 var map;
-var yyc = new google.maps.LatLng(51.0433246, -114.0581015);
+var yyc = new google.maps.LatLng(51.0333246, -114.0581015);
 var i = 0;
 var currentID = 0;
 var uniqueID = function () {
@@ -80,6 +80,7 @@ boxText.innerHTML =
     '<div class="location-mask">' +
         '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
         '<span class="location-name">Britannia Park</span>' + 
+        '<span class="location-ownership">City of Calgary</span>' +
         '<span class="location-courts">4 Courts</span>' +
         '<div class="location-bg"><div class="shadow">' + '<img src="https://maps.googleapis.com/maps/api/staticmap?center=51.104741,-113.972019&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
     '</div>' +
@@ -100,14 +101,15 @@ var infoBubble = new InfoBox(myOptions);
 // APP FUNCTIONALITY
 function initialize() {
     var mapOptions = {
-    zoom: 11,
-    minZoom: 11,
-    maxZoom: 14,
-    center: yyc,
-    panControl: false,
-    mapTypeControl: false,
-    zoomControl: false,
-    streetViewControl: false
+        zoom: 11,
+        minZoom: 11,
+        maxZoom: 15,
+        center: yyc,
+        panControl: false,
+        mapTypeControl: false,
+        zoomControl: false,
+        streetViewControl: false,
+        styles: [{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":-100},{"lightness":99}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#919191"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#e2ccb8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#D2E4C8"}]},{"featureType":"poi","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f0ede5"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon"},{"featureType":"poi.sports_complex", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#D2E2C7"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.6},{"color":"#f29b05"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f2c805"}]}]
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     var useragent = navigator.userAgent;
