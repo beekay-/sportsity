@@ -125,6 +125,10 @@ body {
     height: 100%;
     width: 100%;
 }
+.login, .login-control, .gm-login-iframe {
+    display: none !important;
+    visibility: hidden;
+}
 h1 {
     text-align: center;
     font-weight: 400;
@@ -167,7 +171,7 @@ p {
     cursor: pointer;
 }
 a:link {
-    color: rgb(0, 171, 56);
+    color: rgb(77, 144, 254);
     font-weight: 400;
     text-decoration: none;
 }
@@ -177,11 +181,17 @@ a:visited {
 }
 a:hover, a:active {
     color: rgb(255, 255, 255);
-    background: rgb(0, 171, 56);
+    background: rgb(77, 144, 254);
+    -webkit-border-radius: 1px;
+    border-radius: 2px;
 }
 :focus {
     border: 0;
     outline: none;
+}
+.link:hover {
+    text-decoration: none;
+    background: none;
 }
 
 /* CUSTOM SELECT — http://jsfiddle.net/BB3JK/47 */
