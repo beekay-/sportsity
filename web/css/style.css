@@ -313,7 +313,7 @@ a:hover, a:active {
     100% { transform: rotate(-340deg); -webkit-transform: rotate(-340deg); }
 }
 .location-bg {
-    margin: -74px 0 0 -24px;
+    margin: -88px 0 0 -24px;
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
@@ -324,7 +324,7 @@ a:hover, a:active {
     height: 125px;
     float: left;
 }
-.location-name, .location-courts, .location-route {
+.location-name, .location-courts, .location-route, .location-ownership {
     font-size: 1.250em;
     font-weight: 500;
     color: rgb(255, 255, 255);
@@ -341,12 +341,12 @@ a:hover, a:active {
     cursor: pointer;
     float: right;
     z-index: 99;
-    right: 6px;
+    right: 9px;
 }
 .location-route:hover {
     background: none;   
 }
-.location-courts {
+.location-courts, .location-ownership {
     font-size: 1em;
     padding: 6px 0 0 12px;
 }

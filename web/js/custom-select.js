@@ -12,7 +12,7 @@ $('select').each(function () {
     $this.wrap('<div class="select"></div>');
 
     // Insert a styled div to sit over the top of the hidden select element
-    $this.after('<div class="styledSelect sound"></div>');
+    $this.after('<div class="styledSelect"></div>');
 
     // Cache the styled div
     var $styledSelect = $this.next('div.styledSelect');
@@ -35,7 +35,7 @@ $('select').each(function () {
 
     // Cache the list items
     var $listItems = $list.children('li');
-    $listItems.addClass("sound");
+    //$listItems.addClass("sound");
 
     // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
     $styledSelect.click(function (e) {
@@ -65,6 +65,12 @@ $('select').each(function () {
             getBaseballLocations();
         } else if ($this.val() == 'cricket') {
             getCricketLocations();
+        } else if ($this.val() == 'rugby') {
+            getRugbyLocations();
+        } else if ($this.val() == 'volleyball') {
+            getVolleyballLocations();
+        } else if ($this.val() == 'fieldhockey') {
+            getFieldHockeyLocations();
         }
     });
 
