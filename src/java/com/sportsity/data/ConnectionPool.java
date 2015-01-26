@@ -28,4 +28,8 @@ public class ConnectionPool {
         }
     }
     
+    public static synchronized ConnectionPool getInstance() {
+        return pool;
+    }
+    
 }
