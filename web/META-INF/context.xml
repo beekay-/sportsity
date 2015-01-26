@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/SportSity"/>
+<Context antiJARLocking="true" path="/SportSity">
+  <Resource auth="Container" 
+            driverClassName="org.postgresql.Driver" 
+            logAbandoned="true" 
+            maxActive="100" 
+            maxIdle="30" 
+            maxWait="10000" 
+            name="jdbc/sportsity" 
+            password="webgis" 
+            removeAbandoned="true" 
+            removeAbandonedTimeout="60" 
+            type="javax.sql.DataSource" 
+            url="jdbc:postgresql://localhost:5432/greenroof" 
+            username="postgres"
+  />
+</Context>
