@@ -32,17 +32,27 @@ public class VenueDB {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, venueType);
             resultSet = preparedStatement.executeQuery();
-            VenueSet venueSet = new VenueSet();
+            VenueSet venues = new VenueSet();
             while (resultSet.next()) {
                 Venue venue = new Venue();
                 venue.setVenueID(resultSet.getInt("venueid"));
                 venue.setVenue(resultSet.getString("venue"));
-                venue
+                venue.setLatitude(resultSet.getDouble("latitude"));
+                venue.setLongitude(resultSet.getDouble("longitude"));
+                venue.setVenueType(resultSet.getString("venuetype"));
+                venue.setFields(resultSet.getInt("fields"));
+                venues.addVenue(venue);
             }
+            return venues;
         }
         catch (SQLException e) {
             System.out.println(e);
             return null;
+        }
+        finally {
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            connectionPool.freeConnection(connection);
         }
         
     }
