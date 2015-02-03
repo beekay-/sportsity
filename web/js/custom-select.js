@@ -54,14 +54,26 @@ $('select').each(function () {
         $this.val($(this).attr('rel'));
         $list.hide();
         
-        $.ajax({  
+        var JSONResponse = $.ajax({  
                 type: "GET",  
                 url: "GetVenues",  
                 data: "sportValue=" + $this.val(),  
-                success: function(result){  
+                /*success: function(result){  
                   alert(result);
-                }                
-        });  
+                */
+                async: false
+        }).responseText;  
+        
+        var parsedVenueSet = parseJSONObject(JSONResponse);
+        console.log(parsedVenueSet);
+        if (parsedVenueSet == null) {
+            alert("No venues for that sport");
+        }
+        else {
+            alert(parsedVenueSet.venues[0].latitude);
+            
+        }
+        
         
         /*
         if ($this.val() == 'tennis') {
@@ -102,3 +114,8 @@ $('select').each(function () {
         $list.hide();
     });
 });
+
+function parseJSONObject(rawJSONResponse) {
+    var parsedModuleObjectResponse = jQuery.parseJSON(rawJSONResponse);                
+    return parsedModuleObjectResponse;
+}

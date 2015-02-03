@@ -5,6 +5,9 @@
  */
 package com.sportsity.servlets;
 
+import com.google.gson.Gson;
+import com.sportsity.bean.VenueSet;
+import com.sportsity.data.VenueDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,23 +38,19 @@ public class GetVenuesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
        
-        String sportType = request.getParameter("sportValue");
+        String sportType = request.getParameter("sportValue");//.toLowerCase();
+        //System.out.println(sportType);
+        VenueSet venueSet = VenueDB.getVenues(sportType);
+        //System.out.println(venueSet);
+                
+        String venueSetJSON = new Gson().toJson(venueSet);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(venueSetJSON);
         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetVenuesServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetVenuesServlet at " + request.getContextPath() + "</h1>");
-            out.println("<p>Hello from Rustam</p>");
-            out.println("<p>Sport from the client is " + sportType + "</p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

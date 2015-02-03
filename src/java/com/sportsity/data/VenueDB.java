@@ -27,7 +27,7 @@ public class VenueDB {
         String query = "SELECT * "
                         + "FROM sports as s "
                         + "WHERE s.venuetype = ? "
-                        + "ORDER BY c.venueid;";
+                        + "ORDER BY s.venueid;";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, venueType);
@@ -36,10 +36,10 @@ public class VenueDB {
             while (resultSet.next()) {
                 Venue venue = new Venue();
                 venue.setVenueID(resultSet.getInt("venueid"));
-                venue.setVenue(resultSet.getString("venue"));
+                venue.setVenue(removeSpaces(resultSet.getString("venue")));
                 venue.setLatitude(resultSet.getDouble("latitude"));
                 venue.setLongitude(resultSet.getDouble("longitude"));
-                venue.setVenueType(resultSet.getString("venuetype"));
+                venue.setVenueType(removeSpaces(resultSet.getString("venuetype")));
                 venue.setFields(resultSet.getInt("fields"));
                 venues.addVenue(venue);
             }
@@ -55,6 +55,11 @@ public class VenueDB {
             connectionPool.freeConnection(connection);
         }
         
+    }
+    
+    private static String removeSpaces(String s) {
+        s = s.replaceAll("\\s+", "");
+        return s;
     }
     
 }
