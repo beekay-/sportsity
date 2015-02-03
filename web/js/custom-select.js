@@ -53,8 +53,29 @@ $('select').each(function () {
         $styledSelect.text($(this).text()).removeClass('active');
         $this.val($(this).attr('rel'));
         $list.hide();
+        
+        $.ajax({  
+                type: "GET",  
+                url: "GetVenues",  
+                data: "sportValue=" + $this.val(),  
+                success: function(result){  
+                  alert(result);
+                }                
+        });  
+        
+        /*
         if ($this.val() == 'tennis') {
+            
             getTennisLocations();  
+            
+            var rawJSONResponse = $.ajax({  
+                type: "GET",  
+                url: "GetVenues",  
+                //data: "email="+email,  
+                success: function(result){  
+                  alert(result);
+                }                
+            });  
         } else if ($this.val() == 'soccer') {
             getSoccerLocations();
         } else if ($this.val() == 'basketball') {
@@ -72,6 +93,7 @@ $('select').each(function () {
         } else if ($this.val() == 'fieldhockey') {
             getFieldHockeyLocations();
         }
+        */
     });
 
     // Hides the unordered list when clicking outside of it
