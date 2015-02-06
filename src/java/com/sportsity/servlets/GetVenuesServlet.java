@@ -36,9 +36,8 @@ public class GetVenuesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
        
-        String sportType = request.getParameter("sportValue");//.toLowerCase();
+        String sportType = request.getParameter("sportValue").toUpperCase();
         //System.out.println(sportType);
         VenueSet venueSet = VenueDB.getVenues(sportType);
         //System.out.println(venueSet);
@@ -47,6 +46,7 @@ public class GetVenuesServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(venueSetJSON);
+
         
     }
     
@@ -65,6 +65,7 @@ public class GetVenuesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
@@ -88,7 +89,7 @@ public class GetVenuesServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "The servlet returns a set of sport venues as JSON objects";
     }// </editor-fold>
 
 }

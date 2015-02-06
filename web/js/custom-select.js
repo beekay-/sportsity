@@ -1,3 +1,4 @@
+var venueArray = [];
 // Iterate over each select element
 $('select').each(function () {
 
@@ -54,23 +55,50 @@ $('select').each(function () {
         $this.val($(this).attr('rel'));
         $list.hide();
         
+        /*
+        if (venueMarker === "undefined") {
+            venueMarker.setMap(null);
+        }*/
+        
         var JSONResponse = $.ajax({  
                 type: "GET",  
                 url: "GetVenues",  
                 data: "sportValue=" + $this.val(),  
-                /*success: function(result){  
-                  alert(result);
-                */
                 async: false
         }).responseText;  
         
         var parsedVenueSet = parseJSONObject(JSONResponse);
-        console.log(parsedVenueSet);
+        //console.log(parsedVenueSet);
+        
         if (parsedVenueSet == null) {
             alert("No venues for that sport");
         }
         else {
-            alert(parsedVenueSet.venues[0].latitude);
+            //alert(parsedVenueSet.venues[0].latitude);
+            
+            $.each(parsedVenueSet.venues, function(key, value) {
+                var latLong = new google.maps.LatLng(value.latitude, value.longitude);
+                var venueMarker = new google.maps.Marker({
+                    position: latLong,
+                    map: map,
+                    title: value.venue
+                })
+               // console.log("begin");
+                
+                //console.log("end");
+                
+                google.maps.event.addListener(venueMarker, 'click', function () {
+                    if (infoBubble) {
+                        infoBubble.close();   
+                    }
+                    //infoWindow.setContent(contentString);
+                    infoBubble.open(map,venueMarker); 
+                });
+                google.maps.event.addListener(map, 'click', function () {
+                   infoBubble.close(); 
+                });
+
+            });
             
         }
         
