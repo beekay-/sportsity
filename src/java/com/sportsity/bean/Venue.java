@@ -75,7 +75,9 @@ public class Venue implements Serializable{
      * @param venue the vanue to set
      */
     public void setVenue(String venue) {
-        this.venue = venue;
+        if (venue != null) {
+            this.venue = venue;
+        }    
     }
 
     /**

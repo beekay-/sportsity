@@ -99,6 +99,8 @@ var myOptions = {
 var infoBubble = new InfoBox(myOptions);
 
 // APP FUNCTIONALITY
+// rustam kamberov 
+
 function initialize() {
     
     var mapOptions = {
