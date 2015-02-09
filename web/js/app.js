@@ -100,6 +100,7 @@ var infoBubble = new InfoBox(myOptions);
 
 // APP FUNCTIONALITY
 function initialize() {
+    alert("test");
     var mapOptions = {
         zoom: 11,
         minZoom: 11,
