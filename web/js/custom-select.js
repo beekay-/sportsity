@@ -1,4 +1,4 @@
-var venueArray = [];
+
 // Iterate over each select element
 $('select').each(function () {
 
@@ -54,12 +54,7 @@ $('select').each(function () {
         $styledSelect.text($(this).text()).removeClass('active');
         $this.val($(this).attr('rel'));
         $list.hide();
-        
-        /*
-        if (venueMarker === "undefined") {
-            venueMarker.setMap(null);
-        }*/
-        
+               
         var JSONResponse = $.ajax({  
                 type: "GET",  
                 url: "GetVenues",  
@@ -74,8 +69,7 @@ $('select').each(function () {
             alert("No venues for that sport");
         }
         else {
-            //alert(parsedVenueSet.venues[0].latitude);
-            
+            var venues = [];
             $.each(parsedVenueSet.venues, function(key, value) {
                 var latLong = new google.maps.LatLng(value.latitude, value.longitude);
                 var venueMarker = new google.maps.Marker({
@@ -83,9 +77,8 @@ $('select').each(function () {
                     map: map,
                     title: value.venue
                 })
-               // console.log("begin");
                 
-                //console.log("end");
+                venues.push(venueMarker);
                 
                 google.maps.event.addListener(venueMarker, 'click', function () {
                     if (infoBubble) {
@@ -100,7 +93,9 @@ $('select').each(function () {
 
             });
             
+            var venueCluster = new MarkerClusterer(map, venues);
         }
+        
         
         
         /*

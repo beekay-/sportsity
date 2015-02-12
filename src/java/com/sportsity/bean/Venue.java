@@ -22,7 +22,7 @@ public class Venue implements Serializable{
         this.venueType = "";
         this.fields = 0;
     }
-        
+    
     public Venue(int venueID, String venue, double latitude,
                 double longitude, String venueType, int fields) {
         this.venueID = venueID;
