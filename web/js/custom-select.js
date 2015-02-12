@@ -1,4 +1,4 @@
-
+var venues = [];
 // Iterate over each select element
 $('select').each(function () {
 
@@ -69,7 +69,7 @@ $('select').each(function () {
             alert("No venues for that sport");
         }
         else {
-            var venues = [];
+//            var venues = [];
             $.each(parsedVenueSet.venues, function(key, value) {
                 var latLong = new google.maps.LatLng(value.latitude, value.longitude);
                 var venueMarker = new google.maps.Marker({
@@ -92,7 +92,6 @@ $('select').each(function () {
                 });
 
             });
-            
             var venueCluster = new MarkerClusterer(map, venues);
         }
         
@@ -142,3 +141,4 @@ function parseJSONObject(rawJSONResponse) {
     var parsedModuleObjectResponse = jQuery.parseJSON(rawJSONResponse);                
     return parsedModuleObjectResponse;
 }
+

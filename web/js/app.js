@@ -106,7 +106,7 @@ function initialize() {
     var mapOptions = {
         zoom: 11,
         minZoom: 11,
-        maxZoom: 15,
+        maxZoom: 18,
         center: yyc,
         panControl: false,
         mapTypeControl: false,
