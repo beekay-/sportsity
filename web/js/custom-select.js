@@ -1,4 +1,5 @@
 var venues = [];
+var venueCluster;
 // Iterate over each select element
 $('select').each(function () {
 
@@ -54,7 +55,11 @@ $('select').each(function () {
         $styledSelect.text($(this).text()).removeClass('active');
         $this.val($(this).attr('rel'));
         $list.hide();
-               
+        
+        if (typeof venueCluster != "undefined") {
+            deleteVenues();
+        }    
+        
         var JSONResponse = $.ajax({  
                 type: "GET",  
                 url: "GetVenues",  
@@ -63,71 +68,18 @@ $('select').each(function () {
         }).responseText;  
         
         var parsedVenueSet = parseJSONObject(JSONResponse);
-        //console.log(parsedVenueSet);
-        
+               
         if (parsedVenueSet == null) {
             alert("No venues for that sport");
         }
         else {
-//            var venues = [];
             $.each(parsedVenueSet.venues, function(key, value) {
-                var latLong = new google.maps.LatLng(value.latitude, value.longitude);
-                var venueMarker = new google.maps.Marker({
-                    position: latLong,
-                    map: map,
-                    title: value.venue
-                })
-                
-                venues.push(venueMarker);
-                
-                google.maps.event.addListener(venueMarker, 'click', function () {
-                    if (infoBubble) {
-                        infoBubble.close();   
-                    }
-                    //infoWindow.setContent(contentString);
-                    infoBubble.open(map,venueMarker); 
-                });
-                google.maps.event.addListener(map, 'click', function () {
-                   infoBubble.close(); 
-                });
-
+                var location = new google.maps.LatLng(value.latitude, value.longitude);
+                addVenue(location);
             });
-            var venueCluster = new MarkerClusterer(map, venues);
+
+            venueCluster = new MarkerClusterer(map, venues);
         }
-        
-        
-        
-        /*
-        if ($this.val() == 'tennis') {
-            
-            getTennisLocations();  
-            
-            var rawJSONResponse = $.ajax({  
-                type: "GET",  
-                url: "GetVenues",  
-                //data: "email="+email,  
-                success: function(result){  
-                  alert(result);
-                }                
-            });  
-        } else if ($this.val() == 'soccer') {
-            getSoccerLocations();
-        } else if ($this.val() == 'basketball') {
-            getBasketballLocations();
-        } else if ($this.val() == 'football') {
-            getFootballLocations();
-        } else if ($this.val() == 'baseball') {
-            getBaseballLocations();
-        } else if ($this.val() == 'cricket') {
-            getCricketLocations();
-        } else if ($this.val() == 'rugby') {
-            getRugbyLocations();
-        } else if ($this.val() == 'volleyball') {
-            getVolleyballLocations();
-        } else if ($this.val() == 'fieldhockey') {
-            getFieldHockeyLocations();
-        }
-        */
     });
 
     // Hides the unordered list when clicking outside of it
@@ -140,5 +92,42 @@ $('select').each(function () {
 function parseJSONObject(rawJSONResponse) {
     var parsedModuleObjectResponse = jQuery.parseJSON(rawJSONResponse);                
     return parsedModuleObjectResponse;
+}
+
+function addVenue(location){
+    var venueMarker = new google.maps.Marker({
+        position: location
+    });
+    
+    addInfo(venueMarker);
+    
+    venues.push(venueMarker);
+}
+
+function addInfo(venueMarker) {    
+    google.maps.event.addListener(venueMarker, 'click', function () {
+        if (infoBubble) {
+            infoBubble.close();   
+        }
+        //infoWindow.setContent(contentString);
+        infoBubble.open(map,venueMarker); 
+    });
+    
+    google.maps.event.addListener(map, 'click', function () {
+       infoBubble.close(); 
+    });
+}
+
+function clearMap(){
+    venueCluster.clearMarkers();
+}
+
+function clearVenues(){
+    venues = [];
+}
+
+function deleteVenues(){
+    clearMap();
+    clearVenues();
 }
 
