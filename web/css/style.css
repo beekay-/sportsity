@@ -30,7 +30,6 @@ body {
     -webkit-text-size-adjust: none;
 }
 #menu {
-    height: 75px;
     position: absolute;
     z-index: 99;
     width: 100%;
@@ -112,6 +111,8 @@ body {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    /*width: 100%;
+    max-width: 200px;*/
     -webkit-animation-delay: 1.3s;
     animation-delay: 1.3s;
 }
@@ -301,10 +302,10 @@ a:hover, a:active {
     -webkit-transform: translate3d(0,0,0);
 }
 .shadow {
-    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     z-index: 9999;
 }
 .shadow > img {

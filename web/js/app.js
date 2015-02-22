@@ -107,7 +107,7 @@ function initialize() {
     var mapOptions = {
         zoom: 11,
         minZoom: 11,
-        maxZoom: 18,
+        maxZoom: 16,
         center: yyc,
         panControl: false,
         mapTypeControl: false,
@@ -508,3 +508,9 @@ function addCricketMarkers(i) {
 } 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+google.maps.event.addDomListener(window, "resize", function() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center); 
+});

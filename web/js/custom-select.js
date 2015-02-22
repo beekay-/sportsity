@@ -113,17 +113,32 @@ function addVenue(lat, lng){
         //infoWindow.setContent(contentString);
         
         var boxText = document.createElement("div");
-    
-        boxText.innerHTML = 
-        '<div class="location-mask">' +
-            '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
-            '<span class="location-name">Britannia Park</span>' + 
-            '<span class="location-ownership">City of Calgary</span>' +
-            '<span class="location-courts">4 Courts</span>' +
-            '<div class="location-bg"><div class="shadow">' + 
-            '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
-        '</div>' +
-        '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+        
+        var onMobile = window.matchMedia("only screen and (max-width: 768px)");
+        
+        if (onMobile.matches) {
+             boxText.innerHTML = 
+            '<div class="location-mask">' +
+                '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+                '<span class="location-name">Britannia Park</span>' + 
+                '<span class="location-ownership">City of Calgary</span>' +
+                '<span class="location-courts">4 Courts</span>' +
+                '<div class="location-bg"><div class="shadow">' + 
+                '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
+            '</div>' +
+            '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+        } else {
+            boxText.innerHTML = 
+            '<div class="location-mask">' +
+                '<a class="location-route" target="_blank" href="https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+                '<span class="location-name">Britannia Park</span>' + 
+                '<span class="location-ownership">City of Calgary</span>' +
+                '<span class="location-courts">4 Courts</span>' +
+                '<div class="location-bg"><div class="shadow">' + 
+                '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
+            '</div>' +
+            '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+        }
 
         var myOptions = {
             content: boxText,
@@ -154,13 +169,7 @@ function addVenue(lat, lng){
 
 // POP-UP 
 
-
 //var boxText;
-
-
-
-
-
 
 function clearMap() {
     venueCluster.clearMarkers();
@@ -174,4 +183,3 @@ function deleteVenues(){
     clearMap();
     clearVenues();
 }
-
