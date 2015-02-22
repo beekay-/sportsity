@@ -301,11 +301,11 @@ a:hover, a:active {
     -webkit-transform: translate3d(0,0,0);
 }
 .shadow {
-    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    /*background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     background: linear-gradient(120deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    z-index: 9999;
+    z-index: 9999;*/
 }
 .shadow > img {
     display: block;
