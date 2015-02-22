@@ -82,7 +82,7 @@ $('select').each(function () {
                 
             });
             //var clustererOptions = {gridSize: 5};
-            venueCluster = new MarkerClusterer(map, venues, clustererOptions); 
+            venueCluster = new MarkerClusterer(map, venues); 
         }
     });
 
@@ -116,7 +116,7 @@ function addVenue(lat, lng){
     
         boxText.innerHTML = 
         '<div class="location-mask">' +
-            '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+            '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
             '<span class="location-name">Britannia Park</span>' + 
             '<span class="location-ownership">City of Calgary</span>' +
             '<span class="location-courts">4 Courts</span>' +
@@ -137,9 +137,11 @@ function addVenue(lat, lng){
             enableEventPropagation: false
         };
         
-        infoBubble = new InfoBox(myOptions)
+        infoBubble = new InfoBox(myOptions);
         
-        infoBubble.open(map,venueMarker); 
+        infoBubble.open(map,venueMarker);
+        map.panTo(venueMarker.getPosition());
+        map.panBy(0,-60);
     });
     
     google.maps.event.addListener(map, 'click', function () {
@@ -160,7 +162,7 @@ function addVenue(lat, lng){
 
 
 
-function clearMap(){
+function clearMap() {
     venueCluster.clearMarkers();
 }
 
