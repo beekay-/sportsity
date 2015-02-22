@@ -75,6 +75,7 @@ var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", nu
 var userIcon = new google.maps.MarkerImage("img/markers/user-icon.gif", null, null, null, new google.maps.Size(40,40));
 
 // POP-UP 
+/*
 var boxText = document.createElement("div");
 boxText.innerHTML = 
     '<div class="location-mask">' +
@@ -97,7 +98,7 @@ var myOptions = {
     enableEventPropagation: false
 };
 var infoBubble = new InfoBox(myOptions);
-
+*/
 // APP FUNCTIONALITY
 // rustam kamberov 
 

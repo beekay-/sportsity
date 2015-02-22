@@ -77,8 +77,7 @@ $('select').each(function () {
                 var location = new google.maps.LatLng(value.latitude, value.longitude);
                 addVenue(location);
             });
-
-            venueCluster = new MarkerClusterer(map, venues);
+            venueCluster = new MarkerClusterer(map, venues); 
         }
     });
 
@@ -94,17 +93,42 @@ function parseJSONObject(rawJSONResponse) {
     return parsedModuleObjectResponse;
 }
 
+var infoBubble;
+var boxText;
 function addVenue(location){
+    
     var venueMarker = new google.maps.Marker({
         position: location
     });
+    console.log(location.lat + ', ' + location.long);
     
-    addInfo(venueMarker);
+    boxText = document.createElement("div");
     
-    venues.push(venueMarker);
-}
-
-function addInfo(venueMarker) {    
+    boxText.innerHTML = 
+    '<div class="location-mask">' +
+        '<a class="location-route" href="comgooglemaps://?daddr=51.104741,-113.972019&zoom=17&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+        '<span class="location-name">Britannia Park</span>' + 
+        '<span class="location-ownership">City of Calgary</span>' +
+        '<span class="location-courts">4 Courts</span>' +
+        '<div class="location-bg"><div class="shadow">' + 
+        '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ location.lat + ',' + location.long + '&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
+    '</div>' +
+    '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+    
+    var myOptions = {
+        content: boxText,
+        disableAutoPan: false,
+        alignBottom: true,
+        pixelOffset: new google.maps.Size(-126, -48),
+        zIndex: null,
+        infoBoxClearance: new google.maps.Size(1, 1),
+        isHidden: false,
+        pane: "floatPane",
+        enableEventPropagation: false
+    };
+    
+    infoBubble = new InfoBox(myOptions);
+    
     google.maps.event.addListener(venueMarker, 'click', function () {
         if (infoBubble) {
             infoBubble.close();   
@@ -116,7 +140,20 @@ function addInfo(venueMarker) {
     google.maps.event.addListener(map, 'click', function () {
        infoBubble.close(); 
     });
+    
+    
+    venues.push(venueMarker);
 }
+
+// POP-UP 
+
+
+//var boxText;
+
+
+
+
+
 
 function clearMap(){
     venueCluster.clearMarkers();
