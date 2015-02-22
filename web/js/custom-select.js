@@ -75,7 +75,11 @@ $('select').each(function () {
         else {
             $.each(parsedVenueSet.venues, function(key, value) {
                 var location = new google.maps.LatLng(value.latitude, value.longitude);
-                addVenue(location);
+                var myLat = value.latitude;
+                var myLong = value.longitude;
+                //addVenue(location);
+                addVenue(myLat, myLong);
+                
             });
             venueCluster = new MarkerClusterer(map, venues); 
         }
@@ -95,8 +99,8 @@ function parseJSONObject(rawJSONResponse) {
 
 var infoBubble;
 var boxText;
-function addVenue(location){
-    
+function addVenue(lat, lng){
+    var location = new google.maps.LatLng(lat, lng);
     var venueMarker = new google.maps.Marker({
         position: location
     });
@@ -111,7 +115,7 @@ function addVenue(location){
         '<span class="location-ownership">City of Calgary</span>' +
         '<span class="location-courts">4 Courts</span>' +
         '<div class="location-bg"><div class="shadow">' + 
-        '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ location.lat + ',' + location.long + '&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
+        '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=295x295&maptype=satellite&format=png32" /></div></div>' +
     '</div>' +
     '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
     
