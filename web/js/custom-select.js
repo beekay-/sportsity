@@ -74,7 +74,7 @@ $('select').each(function () {
         }
         else {
             $.each(parsedVenueSet.venues, function(key, value) {
-                var location = new google.maps.LatLng(value.latitude, value.longitude);
+                //var location = new google.maps.LatLng(value.latitude, value.longitude);
                 var myLat = value.latitude;
                 var myLong = value.longitude;
                 //addVenue(location);
@@ -97,16 +97,15 @@ function parseJSONObject(rawJSONResponse) {
     return parsedModuleObjectResponse;
 }
 
-var infoBubble;
-var boxText;
+//var infoBubble;
+// var boxText;
 function addVenue(lat, lng){
     var location = new google.maps.LatLng(lat, lng);
     var venueMarker = new google.maps.Marker({
         position: location
     });
-    console.log(location.lat + ', ' + location.long);
     
-    boxText = document.createElement("div");
+    var boxText = document.createElement("div");
     
     boxText.innerHTML = 
     '<div class="location-mask">' +
@@ -119,7 +118,7 @@ function addVenue(lat, lng){
     '</div>' +
     '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
     
-    var myOptions = {
+    myOptions = {
         content: boxText,
         disableAutoPan: false,
         alignBottom: true,
@@ -131,7 +130,7 @@ function addVenue(lat, lng){
         enableEventPropagation: false
     };
     
-    infoBubble = new InfoBox(myOptions);
+   var infoBubble = new InfoBox(myOptions);
     
     google.maps.event.addListener(venueMarker, 'click', function () {
         if (infoBubble) {
