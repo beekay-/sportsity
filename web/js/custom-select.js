@@ -77,11 +77,12 @@ $('select').each(function () {
                 //var location = new google.maps.LatLng(value.latitude, value.longitude);
                 var myLat = value.latitude;
                 var myLong = value.longitude;
-                //addVenue(location);
+                
                 addVenue(myLat, myLong);
                 
             });
-            venueCluster = new MarkerClusterer(map, venues); 
+            //var clustererOptions = {gridSize: 5};
+            venueCluster = new MarkerClusterer(map, venues, clustererOptions); 
         }
     });
 
@@ -97,17 +98,13 @@ function parseJSONObject(rawJSONResponse) {
     return parsedModuleObjectResponse;
 }
 
-//var infoBubble;
+var infoBubble;
 // var boxText;
 function addVenue(lat, lng){
     var location = new google.maps.LatLng(lat, lng);
     var venueMarker = new google.maps.Marker({
         position: location
     });
-    
-    
-    
-    
     
     google.maps.event.addListener(venueMarker, 'click', function () {
         if (infoBubble) {
@@ -140,7 +137,7 @@ function addVenue(lat, lng){
             enableEventPropagation: false
         };
         
-        var infoBubble = new InfoBox(myOptions);
+        infoBubble = new InfoBox(myOptions)
         
         infoBubble.open(map,venueMarker); 
     });
