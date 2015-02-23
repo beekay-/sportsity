@@ -65,7 +65,7 @@ var cricketMarkersList = [
 var cricketMarkers = [];
 var cricketMarker;
 
-// CUSTOM MARKERS
+/* CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(27,37));
 var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(27,37));
 var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(27,37));
@@ -73,6 +73,36 @@ var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.pn
 var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(27,37));
 var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(27,37));
 var userIcon = new google.maps.MarkerImage("img/markers/user-icon.gif", null, null, null, new google.maps.Size(40,40));
+*/
+function getIconPath(venueType) {
+    var icon;
+    venueType = venueType.toLowerCase();
+    if (venueType == 'soccer') {
+        icon = 'img/markers/soccer-icon.png';
+    }
+    else if (venueType == 'football') {
+        icon = "img/markers/football-icon.png";
+    }
+    else if (venueType == 'basketball') {
+        icon = "img/markers/basketball-icon.png";
+    }
+    else if (venueType == 'baseball') {
+        icon = "img/markers/baseball-icon.png";
+    }
+    else if (venueType == 'cricket') {
+        icon = "img/markers/cricket-icon.png";
+    }
+    else if (venueType == 'tennis') {
+        icon = "img/markers/tennis-icon.png";
+    }
+    return icon;
+}    
+function getIcon(user){
+    if (user == 'user') {
+        return new google.maps.MarkerImage("img/markers/user-icon.gif", null, null, null, new google.maps.Size(40,40));
+    }
+}    
+
 
 // POP-UP 
 /*
@@ -105,8 +135,8 @@ var infoBubble = new InfoBox(myOptions);
 function initialize() {
     
     var mapOptions = {
-        zoom: 11,
-        minZoom: 11,
+        zoom: 10,
+        minZoom: 10,
         maxZoom: 16,
         center: yyc,
         panControl: false,
@@ -212,7 +242,8 @@ function getUserLocation() {
                 userLocationMarker = new google.maps.Marker({
                     position: userLocation,
                     map: map,
-                    icon: userIcon,
+                    //icon: userIcon,
+                    icon: getIcon('user'),
                     optimized: false
                 });
             },
@@ -227,7 +258,7 @@ function getUserLocation() {
         alert("Sorry, geolocation is not supported by your browser.");
     }
 }
-
+/*
 function getTennisLocations() {
     if (soccerMarkers.length > 0) {
         for (var i = 0; i < soccerMarkersList.length; i++) {
@@ -506,7 +537,7 @@ function addCricketMarkers(i) {
         animation: google.maps.Animation.DROP
     }));
 } 
-
+*/
 google.maps.event.addDomListener(window, 'load', initialize);
 
 google.maps.event.addDomListener(window, "resize", function() {

@@ -60,6 +60,13 @@ $('select').each(function () {
             deleteVenues();
         }    
         
+        if (typeof infoBubble !== "undefined" && infoBubble) {
+            infoBubble.close();
+        }
+        
+        map.setCenter(yyc);
+        map.setZoom(10);
+        
         var JSONResponse = $.ajax({  
                 type: "GET",  
                 url: "GetVenues",  
@@ -73,16 +80,25 @@ $('select').each(function () {
             alert("No venues for that sport");
         }
         else {
+            var type;
             $.each(parsedVenueSet.venues, function(key, value) {
-                //var location = new google.maps.LatLng(value.latitude, value.longitude);
                 var myLat = value.latitude;
                 var myLong = value.longitude;
-                
+                type = value.venueType;
                 addVenue(myLat, myLong);
                 
             });
-            //var clustererOptions = {gridSize: 5};
-            venueCluster = new MarkerClusterer(map, venues); 
+            alert(type);
+            var temp = getIconPath(type);
+            alert(temp);
+            var clusterStyle  = [{
+                //url: "img/markers/soccer-icon.png",
+                url: getIconPath(type),
+                height: 80,
+                width: 80
+            }];
+            venueCluster = new MarkerClusterer(map, venues, {"styles": clusterStyle}); 
+            venueCluster.setStyles(clusterStyle);
         }
     });
 
@@ -92,6 +108,7 @@ $('select').each(function () {
         $list.hide();
     });
 });
+
 
 function parseJSONObject(rawJSONResponse) {
     var parsedModuleObjectResponse = jQuery.parseJSON(rawJSONResponse);                
@@ -160,16 +177,14 @@ function addVenue(lat, lng){
     });
     
     google.maps.event.addListener(map, 'click', function () {
-       infoBubble.close(); 
+       if (infoBubble) {
+           infoBubble.close();
+       } 
     });
     
     
     venues.push(venueMarker);
 }
-
-// POP-UP 
-
-//var boxText;
 
 function clearMap() {
     venueCluster.clearMarkers();
