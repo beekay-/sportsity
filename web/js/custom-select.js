@@ -102,28 +102,37 @@ $('select').each(function () {
             var a = getArray();
             //alert(a);
             
-            var clusterStyle = [
-                {
-                  textColor: 'blue',
-                  url: 'img/markers/basketball-icon.png',
+            var clusterOptions = {
+                enableRetinaIcons: true,
+                styles: [{
+                  textColor: 'white',
+                  textSize: 14,
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: 'bold',
+                  url: 'img/markers/low-cluster.png',
                   height: 50,
                   width: 50
-                },
-               {
-                  textColor: 'blue',
-                  url: 'img/markers/cricket-icon.png',
+                },{
+                  textColor: 'white',
+                  textSize: 14,
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: 'bold',
+                  url: 'img/markers/medium-cluster.png',
                   height: 50,
                   width: 50
-                },
-               {
-                  textColor: 'blue',
-                  url: 'img/markers/user-icon.gif',
+                },{
+                  textColor: 'white',
+                  textSize: 14,
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: 'bold',
+                  url: 'img/markers/high-cluster.png',
                   height: 50,
                   width: 50
-                }
-            ]    
+                }]
+            };
+                
             
-            venueCluster = new MarkerClusterer(map, venues, {"styles": clusterStyle}); 
+            venueCluster = new MarkerClusterer(map, venues, clusterOptions); 
             venueCluster.setStyles(clusterStyle);
         }
     });
