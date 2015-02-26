@@ -277,7 +277,7 @@ a:hover, a:active {
 
 .infoBox {
     height: 162px;
-    width: 240px;
+    width: 250px;
     margin-top: 8px;
 }
 .infoBox:after {
@@ -296,17 +296,17 @@ a:hover, a:active {
 }
 .location-mask {
     height: 132px;
-    width: 240px;
+    width: 250px;
     overflow: hidden;
     border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;
     -webkit-transform: translate3d(0,0,0);
 }
 .shadow {
-    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0) 110%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     z-index: 9999;
 }
 .shadow > img {
@@ -332,11 +332,11 @@ a:hover, a:active {
     outline: 1px solid transparent;
     z-index: -1;
     overflow: hidden;
-    width: 270px;
+    width: 280px;
     height: 125px;
     float: left;
 }
-.location-name, .location-courts, .location-route, .location-ownership {
+#location-name, .location-courts, .location-route, .location-ownership {
     font-size: 1.250em;
     font-weight: 500;
     color: rgb(255, 255, 255);
@@ -362,47 +362,50 @@ a:hover, a:active {
     font-size: 1em;
     padding: 6px 0 0 12px;
 }
-.likability {
+.sharing {
     text-transform: uppercase;
     text-align: left;
     float: left;
     padding: 6px 12px;
 }
-.feeling {
+.networks-sm, .networks-lg {
     float: right;
     position: relative;
     right: 10px;
     top: 2px;
-    width: 56px;
+    width: 50px;
 }
-.happy, .meh, .sad {
+.networks-lg {
+    right: 0;
+}
+.tw, .fb, .sms {
     cursor: pointer;
-    background: url('../img/ui/smileys.png') no-repeat;
+    background: url('../img/ui/networks.png') no-repeat;
     width: 16px;
     height: 16px;
     background-size: 32px 48px;
-    background-position: 0 0;
+    background-position: -16px 0;
     display: block;
     float: left;
     margin: 0 4px 0 0;
 }
-.happy:hover {
-    background-position: -16px 0;   
+.tw:hover {
+    background-position: 0 0;   
 }
-.meh {
-    background-position: 0 -16px;
+.fb {
+    background-position: -16px -16px;
 }
-.meh:hover {
-    background-position: -16px -16px;   
+.fb:hover {
+    background-position: 0 -16px;   
 }
-.sad {
-    background-position: 0 -32px;
+.sms {
+    background-position: -16px -32px;
     margin: 0;   
 }
-.sad:hover {
-    background-position: -16px -32px;
+.sms:hover {
+    background-position: 0 -32px;
 }
-.happy:active, .meh:active, .sad:active {
+.tw:active, .fb:active, .sms:active {
     animation: votefx 0.3s;
     -webkit-animation: votefx 0.3s;
 }
