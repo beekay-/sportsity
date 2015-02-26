@@ -115,6 +115,7 @@ body {
     max-width: 200px;*/
     -webkit-animation-delay: 1.3s;
     animation-delay: 1.3s;
+    -webkit-tap-highlight-color: transparent;
 }
 .zoom-buttons {
     -webkit-animation-delay: 1.1s;
