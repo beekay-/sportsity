@@ -65,7 +65,12 @@ var cricketMarkersList = [
 var cricketMarkers = [];
 var cricketMarker;
 
-/* CUSTOM MARKERS
+function getArray() {
+    var a = ['rustam', 'renat'];
+    return a;
+}
+
+// CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(27,37));
 var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(27,37));
 var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(27,37));
@@ -73,29 +78,33 @@ var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.pn
 var baseballIcon = new google.maps.MarkerImage("img/markers/baseball-icon.png", null, null, null, new google.maps.Size(27,37));
 var cricketIcon = new google.maps.MarkerImage("img/markers/cricket-icon.png", null, null, null, new google.maps.Size(27,37));
 var userIcon = new google.maps.MarkerImage("img/markers/user-icon.gif", null, null, null, new google.maps.Size(40,40));
-*/
+
 function getIconPath(venueType) {
     var icon;
-    venueType = venueType.toLowerCase();
-    if (venueType == 'soccer') {
+    //var venueType = venue.toLowerCase();
+    //alert(venueType);
+    if (venueType === "SOCCER") {
+        //return "img/markers/soccer-icon.png";
         icon = 'img/markers/soccer-icon.png';
+        return icon;
     }
-    else if (venueType == 'football') {
-        icon = "img/markers/football-icon.png";
-    }
-    else if (venueType == 'basketball') {
+    if (venueType === "FOOTBALL") {
+        icon = 'img/markers/football-icon.png';
+        return icon;
+    }/*
+    else if (venueType === "basketball") {
         icon = "img/markers/basketball-icon.png";
     }
-    else if (venueType == 'baseball') {
+    else if (venueType === "baseball") {
         icon = "img/markers/baseball-icon.png";
     }
-    else if (venueType == 'cricket') {
+    else if (venueType === "cricket") {
         icon = "img/markers/cricket-icon.png";
     }
-    else if (venueType == 'tennis') {
+    else if (venueType === "tennis") {
         icon = "img/markers/tennis-icon.png";
     }
-    return icon;
+    return icon;*/
 }    
 function getIcon(user){
     if (user == 'user') {

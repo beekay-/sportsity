@@ -81,22 +81,48 @@ $('select').each(function () {
         }
         else {
             var type;
+            
             $.each(parsedVenueSet.venues, function(key, value) {
                 var myLat = value.latitude;
                 var myLong = value.longitude;
                 type = value.venueType;
-                addVenue(myLat, myLong);
-                
+                addVenue(myLat, myLong, type);
             });
-            alert(type);
-            var temp = getIconPath(type);
-            alert(temp);
+            var temp;
+            
+            /*alert(typeof temp);
             var clusterStyle  = [{
                 //url: "img/markers/soccer-icon.png",
-                url: getIconPath(type),
+                url: temp,
+                //url: 'http://icons.iconarchive.com/icons/icons-land/vista-halloween/256/Cool-icon.png',
                 height: 80,
                 width: 80
             }];
+        */
+            var a = getArray();
+            //alert(a);
+            
+            var clusterStyle = [
+                {
+                  textColor: 'blue',
+                  url: 'img/markers/basketball-icon.png',
+                  height: 50,
+                  width: 50
+                },
+               {
+                  textColor: 'blue',
+                  url: 'img/markers/cricket-icon.png',
+                  height: 50,
+                  width: 50
+                },
+               {
+                  textColor: 'blue',
+                  url: 'img/markers/user-icon.gif',
+                  height: 50,
+                  width: 50
+                }
+            ]    
+            
             venueCluster = new MarkerClusterer(map, venues, {"styles": clusterStyle}); 
             venueCluster.setStyles(clusterStyle);
         }
@@ -117,9 +143,13 @@ function parseJSONObject(rawJSONResponse) {
 
 var infoBubble;
 // var boxText;
-function addVenue(lat, lng){
+function addVenue(lat, lng, venueType){
     var location = new google.maps.LatLng(lat, lng);
+    var iconPath = getIconPath(venueType);
+    //alert(iconPath);
     var venueMarker = new google.maps.Marker({
+        icon: 'img/markers/tennis-icon.png',
+        //icon: iconPath,
         position: location
     });
     
