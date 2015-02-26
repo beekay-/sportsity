@@ -133,7 +133,6 @@ $('select').each(function () {
                 
             
             venueCluster = new MarkerClusterer(map, venues, clusterOptions); 
-            venueCluster.setStyles(clusterStyle);
         }
     });
 
@@ -168,6 +167,22 @@ function addVenue(lat, lng, venueType){
         }
         //infoWindow.setContent(contentString);
         
+        var locationLatLng = new google.maps.LatLng(lat, lng);
+        
+        geocoder.geocode({'latLng':locationLatLng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var locationName = document.getElementById('location-name');
+                    locationName.innerHTML = "" + results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name;
+                    //var list = results[].types;
+                } else {
+                    alert('Location name not found.');
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+        
         var boxText = document.createElement("div");
         
         var onMobile = window.matchMedia("only screen and (max-width: 768px)");
@@ -176,24 +191,24 @@ function addVenue(lat, lng, venueType){
              boxText.innerHTML = 
             '<div class="location-mask">' +
                 '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
-                '<span class="location-name">Britannia Park</span>' + 
+                '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">City of Calgary</span>' +
                 '<span class="location-courts">4 Courts</span>' +
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+            '<span class="sharing">Share</span>' + '<span class="networks-sm"><span class="tw"></span> <span class="fb"></span> <span class="sms"></span></span>';
         } else {
             boxText.innerHTML = 
             '<div class="location-mask">' +
                 '<a class="location-route" target="_blank" href="https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
-                '<span class="location-name">Britannia Park</span>' + 
+                '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">City of Calgary</span>' +
                 '<span class="location-courts">4 Courts</span>' +
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="likability">Likability</span>' + '<span class="feeling"><span class="happy"></span> <span class="meh"></span> <span class="sad"></span></span>';
+            '<span class="sharing">Share</span>' + '<span class="networks-lg"><span class="tw"></span> <span class="fb"></span></span>';
         }
 
         var myOptions = {

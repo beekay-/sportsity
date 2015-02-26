@@ -6,6 +6,7 @@ var currentID = 0;
 var uniqueID = function () {
 	return ++currentID;
 };
+var geocoder;
 
 function getArray() {
     var a = ['rustam', 'renat'];
@@ -88,7 +89,7 @@ function initialize() {
     var mapOptions = {
         zoom: 11,
         minZoom: 11,
-        maxZoom: 16,
+        maxZoom: 17,
         center: yyc,
         disableDefaultUI: true,
         styles: [{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":-100},{"lightness":99}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#919191"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ede9dc"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#D2E4C8"}]},{"featureType":"poi","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f0ede5"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon"},{"featureType":"poi.sports_complex", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#D2E2C7"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.6},{"color":"#f29b05"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f2c805"}]}]
@@ -133,6 +134,8 @@ function initialize() {
             obj.play(); 
         });*/
     }(jQuery));
+    
+    geocoder = new google.maps.Geocoder();
 }
 
 function zoomControl(controlDiv, map) {
