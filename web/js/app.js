@@ -14,7 +14,7 @@ function getArray() {
 }
 
 // CUSTOM MARKERS
-var tennisIcon = new google.maps.MarkerImage("img/markers/tennis-icon.png", null, null, null, new google.maps.Size(27,37));
+var tennisIcon = new google.maps.MarkerImage("img/markers/tennis/tennis-marker.png", null, null, null, new google.maps.Size(27,37));
 var soccerIcon = new google.maps.MarkerImage("img/markers/soccer-icon.png", null, null, null, new google.maps.Size(27,37));
 var footballIcon = new google.maps.MarkerImage("img/markers/football-icon.png", null, null, null, new google.maps.Size(27,37));
 var basketballIcon = new google.maps.MarkerImage("img/markers/basketball-icon.png", null, null, null, new google.maps.Size(27,37));
@@ -89,7 +89,7 @@ function initialize() {
     var mapOptions = {
         zoom: 11,
         minZoom: 11,
-        maxZoom: 17,
+        maxZoom: 18,
         center: yyc,
         disableDefaultUI: true,
         styles: [{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":-100},{"lightness":99}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#919191"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ede9dc"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#D2E4C8"}]},{"featureType":"poi","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f0ede5"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon"},{"featureType":"poi.sports_complex", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#D2E2C7"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.6},{"color":"#f29b05"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f2c805"}]}]
@@ -213,9 +213,8 @@ function getUserLocation() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 google.maps.event.addDomListener(window, "resize", function() {
-    var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
-    map.setCenter(center); 
+    map.setCenter(yyc); 
 });
 
 if ('addEventListener' in document) {

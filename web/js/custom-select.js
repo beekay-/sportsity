@@ -106,28 +106,28 @@ $('select').each(function () {
                 enableRetinaIcons: true,
                 styles: [{
                   textColor: 'white',
-                  textSize: 14,
+                  textSize: 12,
                   fontFamily: 'Roboto, sans-serif',
                   fontWeight: 'bold',
-                  url: 'img/markers/low-cluster.png',
-                  height: 50,
-                  width: 50
+                  url: 'img/markers/tennis/tennis-low-cluster.png',
+                  height: 40,
+                  width: 40
                 },{
                   textColor: 'white',
-                  textSize: 14,
+                  textSize: 12,
                   fontFamily: 'Roboto, sans-serif',
                   fontWeight: 'bold',
-                  url: 'img/markers/medium-cluster.png',
-                  height: 50,
-                  width: 50
+                  url: 'img/markers/tennis/tennis-medium-cluster.png',
+                  height: 40,
+                  width: 40
                 },{
                   textColor: 'white',
-                  textSize: 14,
+                  textSize: 12,
                   fontFamily: 'Roboto, sans-serif',
                   fontWeight: 'bold',
-                  url: 'img/markers/high-cluster.png',
-                  height: 50,
-                  width: 50
+                  url: 'img/markers/tennis/tennis-high-cluster.png',
+                  height: 40,
+                  width: 40
                 }]
             };
                 
@@ -156,7 +156,7 @@ function addVenue(lat, lng, venueType){
     var iconPath = getIconPath(venueType);
     //alert(iconPath);
     var venueMarker = new google.maps.Marker({
-        icon: 'img/markers/tennis-icon.png',
+        icon: tennisIcon,
         //icon: iconPath,
         position: location
     });
