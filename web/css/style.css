@@ -184,8 +184,6 @@ a:visited {
 a:hover, a:active {
     color: rgb(255, 255, 255);
     background: rgb(77, 144, 254);
-    -webkit-border-radius: 1px;
-    border-radius: 2px;
 }
 :focus {
     border: 0;
