@@ -9,6 +9,7 @@ public class Venue implements Serializable{
     private double latitude;
     private double longitude;
     private String venueType;
+    private String venueSteward;
     private int fields;
     
     /**
@@ -20,16 +21,18 @@ public class Venue implements Serializable{
         this.latitude = 0;
         this.longitude = 0;
         this.venueType = "";
+        this.venueSteward = "";
         this.fields = 0;
     }
     
     public Venue(int venueID, String venue, double latitude,
-                double longitude, String venueType, int fields) {
+                double longitude, String venueType, String venueSteward, int fields) {
         this.venueID = venueID;
         this.venue = venue;
         this.latitude = latitude;
         this.longitude = longitude;
         this.venueType = venueType;
+        this.venueSteward = venueSteward;
         this.fields = fields;
     }
     
@@ -42,12 +45,13 @@ public class Venue implements Serializable{
         this.latitude = aVenue.latitude;
         this.longitude = aVenue.longitude;
         this.venueType = aVenue.venueType;
+        this.venueSteward = aVenue.venueSteward;
         this.fields = aVenue.fields;
     }
     
     public String toString(){
         return "(" + this.venueID + ", " + this.venue + ", " + this.latitude +
-                ", " + this.longitude + ", " + this.venueType + ", " + this.fields + ")";
+                ", " + this.longitude + ", " + this.venueType + ", " + this.venueSteward + " " + this.fields + ")";
     }    
     
     /**
@@ -120,6 +124,20 @@ public class Venue implements Serializable{
      */
     public void setVenueType(String venueType) {
         this.venueType = venueType;
+    }
+    
+    /**
+     * @return the venueType
+     */
+    public String getVenueSteward() {
+        return venueSteward;
+    }
+
+    /**
+     * @param venueSteward the venueType to set
+     */
+    public void setVenueSteward(String venueSteward) {
+        this.venueSteward = venueSteward;
     }
 
     /**

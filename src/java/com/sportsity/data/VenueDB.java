@@ -38,9 +38,9 @@ public class VenueDB {
                 Venue venue = new Venue();
                 venue.setVenueID(resultSet.getInt("venueid"));
                 venue.setVenue(removeSpaces(resultSet.getString("asset_cd")));
-                venue.setVenue(removeSpaces(resultSet.getString("steward")));
+                venue.setVenueSteward(resultSet.getString("steward").toLowerCase());
                 venue.setVenue(removeSpaces(resultSet.getString("classtype")));
-                venue.setVenueType(resultSet.getString("sporttype"));
+                venue.setVenueType(resultSet.getString("sporttype").toLowerCase());
                 venue.setFields(resultSet.getInt("numcourts"));
                 venue.setLatitude(resultSet.getDouble("latitude"));
                 venue.setLongitude(resultSet.getDouble("longitude"));
