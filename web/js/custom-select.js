@@ -174,7 +174,6 @@ function addVenue(lat, lng, venueType){
                 if (results[0]) {
                     var locationName = document.getElementById('location-name');
                     locationName.innerHTML = "" + results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name;
-                    //var list = results[].types;
                 } else {
                     alert('Location name not found.');
                 }
@@ -197,7 +196,7 @@ function addVenue(lat, lng, venueType){
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="sharing">Share</span>' + '<span class="networks-sm"><span class="tw"></span> <span class="fb"></span> <span class="sms"></span></span>';
+            '<span class="sharing">Share</span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s' + " " + 'go play' + " " + venueType + 'at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="whatsapp://send?text=Let\’s go play' + venueType +  'at' + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
         } else {
             boxText.innerHTML = 
             '<div class="location-mask">' +
@@ -208,7 +207,7 @@ function addVenue(lat, lng, venueType){
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="sharing">Share</span>' + '<span class="networks-lg"><span class="tw"></span> <span class="fb"></span></span>';
+            '<span class="sharing">Share</span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s' + " " + 'go play' + " " + venueType + 'at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
         }
 
         var myOptions = {
