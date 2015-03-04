@@ -80,32 +80,21 @@ $('select').each(function () {
             alert("No venues for that sport");
         }
         else {
-            var type;
+            
+            
             
             $.each(parsedVenueSet.venues, function(key, value) {
                 var myLat = value.latitude;
                 var myLong = value.longitude;
-                type = value.venueType;
+                var venType = value.venueType;
                 var fields = value.fields;
                 var owner = value.venueSteward;
-                addVenue(myLat, myLong, type, fields, owner);
+                addVenue(myLat, myLong, venType, fields, owner);
             });
-            var temp;
-            
-            /*alert(typeof temp);
-            var clusterStyle  = [{
-                //url: "img/markers/soccer-icon.png",
-                url: temp,
-                //url: 'http://icons.iconarchive.com/icons/icons-land/vista-halloween/256/Cool-icon.png',
-                height: 80,
-                width: 80
-            }];
-        */
-            var a = getArray();
-            //alert(a);
-            
+                        
             var clusterOptions = {
                 enableRetinaIcons: true,
+                gridSize: 30,
                 styles: [{
                   textColor: 'white',
                   textSize: 12,
@@ -194,9 +183,15 @@ function addVenue(lat, lng, venueType, fields, owner){
              boxText.innerHTML = 
             '<div class="location-mask">' +
                 '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
                 '<span class="location-courts">' + numCourts + 'Courts</span>' +
+
+                '<span class="location-name">Hello World</span>' + 
+                '<span class="location-ownership">City of Calgary</span>' +
+                '<span class="location-courts">4 Courts</span>' +
+
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +

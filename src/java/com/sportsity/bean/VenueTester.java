@@ -19,7 +19,7 @@ public class VenueTester {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        /*
         VenueSet vs = new VenueSet();
         Venue v1 = new Venue(1, "Venue #1", 54.234234234, -114.24234234, "tennis", 3);
         Venue v2 = new Venue(2, "Venue #2", 54.212312334234, -112.24234234, "socces", 2);
@@ -49,6 +49,7 @@ public class VenueTester {
         
         System.out.println("-----The initial array-------");
         System.out.println(vs.toString());
+                */
     }
     
 }

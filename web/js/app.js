@@ -8,11 +8,6 @@ var uniqueID = function () {
 };
 var geocoder;
 
-function getArray() {
-    var a = ['rustam', 'renat'];
-    return a;
-}
-
 // CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis.png", null, null, null, new google.maps.Size(27,37));
 var soccerIcon = new google.maps.MarkerImage("img/markers/soccer.png", null, null, null, new google.maps.Size(27,37));
@@ -85,6 +80,8 @@ var infoBubble = new InfoBox(myOptions);
 // rustam kamberov 
 
 function initialize() {
+    
+    
     
     var mapOptions = {
         zoom: 11,
