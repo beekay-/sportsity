@@ -121,9 +121,11 @@ $('select').each(function () {
                   width: 40
                 }]
             };
-                
             
             venueCluster = new MarkerClusterer(map, venues, clusterOptions); 
+            google.maps.event.addListener(venueCluster, 'click', function () {
+                infoBubble.close();
+            });
         }
     });
 
@@ -195,7 +197,7 @@ function addVenue(lat, lng, venueType, fields, owner){
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="sharing">Share</span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:&body=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
+            '<span id="like-system"><span class="like-label">Like</span>' + '<span class="like-number">198</span></span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:&body=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
         } else {
             boxText.innerHTML = 
             '<div class="location-mask">' +
@@ -206,14 +208,14 @@ function addVenue(lat, lng, venueType, fields, owner){
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
-            '<span class="sharing">Share</span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
+            '<span id="like-system"><span class="like-label">Like</span>' + '<span class="like-number">198</span></span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType.replace(/\s+/g,' ').trim() + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
         }
 
         var myOptions = {
             content: boxText,
             disableAutoPan: false,
             alignBottom: true,
-            pixelOffset: new google.maps.Size(-126, -48),
+            pixelOffset: new google.maps.Size(-126, -50),
             zIndex: null,
             infoBoxClearance: new google.maps.Size(1, 1),
             isHidden: false,
@@ -227,13 +229,6 @@ function addVenue(lat, lng, venueType, fields, owner){
         map.panTo(venueMarker.getPosition());
         map.panBy(0,-60);
     });
-    
-    google.maps.event.addListener(map, 'click', function () {
-       if (infoBubble) {
-           infoBubble.close();
-       } 
-    });
-    
     
     venues.push(venueMarker);
 }
