@@ -81,8 +81,6 @@ $('select').each(function () {
         }
         else {
             
-            
-            
             $.each(parsedVenueSet.venues, function(key, value) {
                 var myLat = value.latitude;
                 var myLong = value.longitude;
