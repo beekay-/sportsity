@@ -92,7 +92,7 @@ $('select').each(function () {
                         
             var clusterOptions = {
                 enableRetinaIcons: true,
-                gridSize: 30,
+                gridSize: 50,
                 styles: [{
                   textColor: 'white',
                   textSize: 12,
@@ -122,7 +122,9 @@ $('select').each(function () {
             
             venueCluster = new MarkerClusterer(map, venues, clusterOptions); 
             google.maps.event.addListener(venueCluster, 'click', function () {
-                infoBubble.close();
+                if (infoBubble) {
+                    infoBubble.close();
+                }
             });
         }
     });
