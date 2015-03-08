@@ -33,7 +33,7 @@ body {
     position: absolute;
     z-index: 99;
     width: 100%;
-    /*max-width: 1280px;*/
+    max-width: 426px;
     display: -webkit-box;
     display: -moz-box-flex;
     display: -webkit-flex;
@@ -47,8 +47,8 @@ body {
     background: rgb(255, 255, 255);
     -webkit-box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15); 
     box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15);
-    border-radius: 3px;
     -webkit-border-radius: 3px;
+    border-radius: 3px;
     -webkit-animation-delay: 1s;
     animation-delay: 1s;
     margin: 10px 5px 10px 5px;
@@ -76,14 +76,14 @@ body {
 #modal {
     display: none;
     height: 400px;
-    width: 252px;
+    width: 260px;
     position: absolute;
     left: 0; right: 0;
     top: 0; bottom: 0;
     padding: 20px;
     margin: auto;
-    animation-delay: 0s;
     -webkit-animation-delay: 0s;
+    animation-delay: 0s;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     cursor: default;
@@ -114,8 +114,6 @@ body {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    /*width: 100%;
-    max-width: 200px;*/
     -webkit-animation-delay: 1.3s;
     animation-delay: 1.3s;
     -webkit-tap-highlight-color: transparent;
@@ -152,9 +150,6 @@ p {
 }
 .notice, .contact {
     font-size: 0.625em;
-}
-.contact {
-    padding-bottom: 1.5em;
 }
 .get-started {
     border: 2px solid rgb(0, 122, 40);
@@ -247,8 +242,8 @@ a:hover, a:active {
     background-color: white;
     -webkit-box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15); 
     box-shadow: 0 8px 12px rgba(0, 0, 1, .5), inset 0 -2px 0px rgba(0, 0, 1, .15);
-    border-radius: 3px;
     -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 .options li {
     margin: 0 0;
@@ -259,14 +254,14 @@ a:hover, a:active {
     color: rgb(255, 255, 255);
 }
 .options li:hover:first-child {
-    border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
     background: transparent;
     color: inherit;
 }
 .options li:hover:last-child {
-    border-radius: 0 0 3px 3px;
     -webkit-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
 }
 ::-moz-selection {
     background-color: rgb(255, 255, 255);
@@ -300,8 +295,8 @@ a:hover, a:active {
     height: 132px;
     width: 250px;
     overflow: hidden;
-    border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
     -webkit-transform: translate3d(0,0,0);
 }
 .shadow {
@@ -328,9 +323,9 @@ a:hover, a:active {
 }
 .location-bg {
     margin: -90px 0 0 -25px;
-    transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
+    transform: rotate(-15deg);
     outline: 1px solid transparent;
     z-index: -1;
     overflow: hidden;
@@ -389,6 +384,10 @@ a:hover, a:active {
     -webkit-border-radius: 2px;
     border-radius: 2px;
 }
+.press {
+    -webkit-animation: likefx 0.3s;
+    animation: likefx 0.3s;
+}
 .networks-sm, .networks-lg {
     float: right;
     position: relative;
@@ -427,16 +426,13 @@ a:hover, a:active {
 .sms:hover {
     background-position: 0 -32px;
 }
-/*.cluster {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}*/
-@keyframes votefx {
-    0% { transform: scale(1.5); -webkit-transform: scale(1.5); opacity: 1; }
-    100% { transform: scale(3); -webkit-transform: scale(3); opacity: 0; }
+@keyframes likefx {
+    0% { transform: scale(1.1); -webkit-transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(2.5); -webkit-transform: scale(2.5); opacity: 0; }
 }
-@-webkit-keyframes votefx {
-    0% { transform: scale(1.5); -webkit-transform: scale(1.5); opacity: 1; }
-    100% { transform: scale(3); -webkit-transform: scale(3); opacity: 0; }
+@-webkit-keyframes likefx {
+    0% { transform: scale(1.1); -webkit-transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(2.5); -webkit-transform: scale(2.5); opacity: 0; }
 }
 
 /* MEDIA QUERIES */

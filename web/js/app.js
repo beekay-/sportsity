@@ -12,7 +12,7 @@ var footballIcon = new google.maps.MarkerImage("img/markers/football.png", null,
 var basketballIcon = new google.maps.MarkerImage("img/markers/basketball.png", null, null, null, new google.maps.Size(27,37));
 var baseballIcon = new google.maps.MarkerImage("img/markers/baseball.png", null, null, null, new google.maps.Size(27,37));
 var cricketIcon = new google.maps.MarkerImage("img/markers/cricket.png", null, null, null, new google.maps.Size(27,37));
-var userIcon = new google.maps.MarkerImage("img/markers/user-location.svg", null, null, null, new google.maps.Size(50,50));
+var userIcon = new google.maps.MarkerImage("img/markers/user-location.svg", null, null, null, new google.maps.Size(52,52));
 
 function getIconPath(venueType) {
     var icon;
@@ -86,8 +86,8 @@ function initialize() {
     map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
     
     (function($) {
-        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(250); $('#modal').addClass('animated bounceIn'); });
-        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(250); $('#modal').removeClass('animated bounceIn'); });
+        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(200); $('#modal').addClass('animated bounceIn'); });
+        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(200); $('#modal').removeClass('animated bounceIn'); });
         /*var obj = document.createElement("audio"); 
         obj.setAttribute("src", "audio/tap.mp3");
         //$.get(); 
@@ -174,13 +174,16 @@ function getUserLocation() {
 
 function likeCounter() {
     likes++;
-    document.getElementById('like-number').innerHTML = +likes;
+    var likeNum = document.getElementById('like-number');
+    likeNum.innerHTML = +likes;
+    likeNum.className = 'press';
+    setTimeout(function() { likeNum.className = ''; }, 200);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-google.maps.event.addDomListener(window, "resize", function() {
-    google.maps.event.trigger(map, "resize");
+google.maps.event.addDomListener(window, 'resize', function() {
+    google.maps.event.trigger(map, 'resize');
     map.setCenter(yyc); 
 });
 
