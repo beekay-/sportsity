@@ -86,6 +86,7 @@ body {
     -webkit-animation-delay: 0s;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
+    cursor: default;
 }
 .sportsity {
     width: 100px;
@@ -371,13 +372,16 @@ a:hover, a:active {
 }
 #like-system {
     cursor: pointer;
+    float: left;
+    width: 65px;
+    height: 22px;
 }
-.like-label, .like-number {
+.like-label, #like-number {
     text-align: left;
     float: left;
     padding: 6px 0 0 12px;
 }
-.like-number {
+#like-number {
     font-size: 0.813em;
     margin: 4px;
     padding: 2px;

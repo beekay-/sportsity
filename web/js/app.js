@@ -1,12 +1,9 @@
 // GLOBAL VARIABLES
 var map;
 var yyc = new google.maps.LatLng(51.0333246, -114.0581015);
-var i = 0;
-var currentID = 0;
-var uniqueID = function () {
-	return ++currentID;
-};
 var geocoder;
+var likes = 1;
+var useragent = navigator.userAgent;
 
 // CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis.png", null, null, null, new google.maps.Size(27,37));
@@ -60,10 +57,10 @@ function initialize() {
         styles: [{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":-100},{"lightness":99}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#919191"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ede9dc"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#D2E4C8"}]},{"featureType":"poi","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f0ede5"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon"},{"featureType":"poi.sports_complex", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#D2E2C7"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.6},{"color":"#f29b05"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f2c805"}]}]
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    var useragent = navigator.userAgent;
-        if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
-            map.setZoom(11);
-        }
+    if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
+        map.setZoom(11);
+    }
+    //alert(useragent);
     var lineSymbol = {
         path: 'M 0,-2 0,2',
         strokeOpacity: 0.85,
@@ -89,8 +86,8 @@ function initialize() {
     map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
     
     (function($) {
-        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(250); });
-        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(250); });
+        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(250); $('#modal').addClass('animated bounceIn'); });
+        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(250); $('#modal').removeClass('animated bounceIn'); });
         /*var obj = document.createElement("audio"); 
         obj.setAttribute("src", "audio/tap.mp3");
         //$.get(); 
@@ -155,6 +152,7 @@ function getUserLocation() {
                     return;
                 }
                 map.setCenter(userLocation);
+                map.setZoom(15);
                 userLocationMarker = new google.maps.Marker({
                     position: userLocation,
                     map: map,
@@ -172,6 +170,11 @@ function getUserLocation() {
     } else {
         alert("Sorry, geolocation is not supported by your browser.");
     }
+}
+
+function likeCounter() {
+    likes++;
+    document.getElementById('like-number').innerHTML = +likes;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
