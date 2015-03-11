@@ -12,35 +12,34 @@ var footballIcon = new google.maps.MarkerImage("img/markers/football.png", null,
 var basketballIcon = new google.maps.MarkerImage("img/markers/basketball.png", null, null, null, new google.maps.Size(27,37));
 var baseballIcon = new google.maps.MarkerImage("img/markers/baseball.png", null, null, null, new google.maps.Size(27,37));
 var cricketIcon = new google.maps.MarkerImage("img/markers/cricket.png", null, null, null, new google.maps.Size(27,37));
+var rugbyIcon = new google.maps.MarkerImage("img/markers/rugby.png", null, null, null, new google.maps.Size(27,37));
+var volleyballIcon = new google.maps.MarkerImage("img/markers/volleyball.png", null, null, null, new google.maps.Size(27,37));
+var fieldHockeyIcon = new google.maps.MarkerImage("img/markers/field-hockey.png", null, null, null, new google.maps.Size(27,37));
 var userIcon = new google.maps.MarkerImage("img/markers/user-location.svg", null, null, null, new google.maps.Size(52,52));
 
 function getIconPath(venueType) {
     var icon;
-    //var venueType = venue.toLowerCase();
-    //alert(venueType);
-    if (venueType === "SOCCER") {
-        //return "img/markers/soccer.png";
-        icon = 'img/markers/soccer.png';
-        return icon;
+    if (venueType === "soccer") {
+        return soccerIcon;
+    } else if (venueType === "football") {
+        return footballIcon;
+    } else if (venueType === "basketball") {
+        return basketballIcon;
+    } else if (venueType === "baseball") {
+        return baseballIcon;
+    } else if (venueType === "cricket") {
+        return cricketIcon;
+    } else if (venueType === "tennis") {
+        return tennisIcon;
+    } else if (venueType === "volleyball") {
+        return volleyballIcon;
+    } else if (venueType === "rugby") {
+        return rugbyIcon;
+    } else if (venueType === "fieldhockey") {
+        return fieldHockeyIcon;
     }
-    if (venueType === "FOOTBALL") {
-        icon = 'img/markers/football-icon.png';
-        return icon;
-    }/*
-    else if (venueType === "basketball") {
-        icon = "img/markers/basketball.png";
-    }
-    else if (venueType === "baseball") {
-        icon = "img/markers/baseball.png";
-    }
-    else if (venueType === "cricket") {
-        icon = "img/markers/cricket.png";
-    }
-    else if (venueType === "tennis") {
-        icon = "img/markers/tennis.png";
-    }
-    return icon;*/
-}    
+}
+
 function getIcon(user){
     if (user == 'user') {
         return new google.maps.MarkerImage("img/markers/user-location.svg", null, null, null, new google.maps.Size(64,64));
@@ -53,14 +52,12 @@ function initialize() {
         minZoom: 11,
         maxZoom: 18,
         center: yyc,
+        overviewMapControl: true,
         disableDefaultUI: true,
         styles: [{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":-100},{"lightness":99}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#919191"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ede9dc"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#D2E4C8"}]},{"featureType":"poi","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f0ede5"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon"},{"featureType":"poi.sports_complex", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#D2E2C7"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.6},{"color":"#f29b05"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f2c805"}]}]
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
-        map.setZoom(11);
-    }
-    //alert(useragent);
+
     var lineSymbol = {
         path: 'M 0,-2 0,2',
         strokeOpacity: 0.85,
@@ -152,7 +149,6 @@ function getUserLocation() {
                     return;
                 }
                 map.setCenter(userLocation);
-                map.setZoom(15);
                 userLocationMarker = new google.maps.Marker({
                     position: userLocation,
                     map: map,
