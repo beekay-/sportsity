@@ -40,7 +40,7 @@ public class VenueDB {
                 venue.setVenue(removeSpaces(resultSet.getString("asset_cd")));
                 venue.setVenueSteward(resultSet.getString("steward").toLowerCase());
                 venue.setVenue(removeSpaces(resultSet.getString("classtype")));
-                venue.setVenueType(resultSet.getString("sporttype").toLowerCase());
+                venue.setVenueType(removeSpaces(resultSet.getString("sporttype").toLowerCase()));
                 venue.setFields(resultSet.getInt("numcourts"));
                 venue.setLatitude(resultSet.getDouble("latitude"));
                 venue.setLongitude(resultSet.getDouble("longitude"));
