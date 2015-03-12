@@ -75,7 +75,7 @@ body {
 }
 #modal {
     display: none;
-    height: 400px;
+    height: 430px;
     width: 260px;
     position: absolute;
     left: 0; right: 0;
@@ -148,8 +148,14 @@ p {
 .about {
     font-size: 0.750em;
 }
-.notice, .contact {
+.notice, .contact, .credit {
     font-size: 0.625em;
+}
+.credit {
+    padding: 0;
+}
+.sub-credit {
+    font-size: 0.500em;
 }
 .get-started {
     border: 2px solid rgb(0, 122, 40);
