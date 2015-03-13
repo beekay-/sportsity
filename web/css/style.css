@@ -384,8 +384,8 @@ a:hover, a:active {
 }
 #like-number {
     font-size: 0.813em;
-    margin: 4px;
-    padding: 2px;
+    margin: 3px;
+    padding: 3px;
     border: 1px solid #ccc;
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -397,40 +397,44 @@ a:hover, a:active {
 .networks-sm, .networks-lg {
     float: right;
     position: relative;
-    right: 10px;
-    top: 3px;
-    width: 60px;
+    right: 11px;
+    top: 0;
+    width: 70px;
 }
 .networks-lg {
-    right: 0;
+    right: 7px;
     width: 50px;
 }
 .tw, .fb, .sms {
     cursor: pointer;
     background: url('../img/ui/networks.png') no-repeat;
-    width: 16px;
-    height: 16px;
-    background-size: 32px 48px;
-    background-position: -16px 0;
+    width: 20px;
+    height: 20px;
+    background-size: 40px 60px;
+    background-position: -20px 0;
     display: block;
     float: left;
     margin: 0 4px 0 0;
+    opacity: 0.65;
 }
 .tw:hover {
-    background-position: 0 0;  
+    background-position: 0 0;
+    opacity: 1;
 }
 .fb {
-    background-position: -16px -16px;
+    background-position: -20px -20px;
 }
 .fb:hover {
-    background-position: 0 -16px;   
+    background-position: 0 -20px;
+    opacity: 1;
 }
 .sms {
-    background-position: -16px -32px;
+    background-position: -20px -40px;
     margin: 0;   
 }
 .sms:hover {
-    background-position: 0 -32px;
+    background-position: 0 -40px;
+    opacity: 1;
 }
 @keyframes likefx {
     0% { transform: scale(1.1); -webkit-transform: scale(1.1); opacity: 1; }
