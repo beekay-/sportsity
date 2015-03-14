@@ -155,6 +155,10 @@ function addVenue(lat, lng, venueType, fields, owner){
         zIndex: 99999
     });
     
+    google.maps.event.addListener(venueMarker, 'dblclick', function () {
+        infoBubble.close();   
+    });
+    
     google.maps.event.addListener(venueMarker, 'click', function () {
         if (infoBubble) {
             infoBubble.close();   
@@ -168,10 +172,10 @@ function addVenue(lat, lng, venueType, fields, owner){
                     var locationName = document.getElementById('location-name');
                     locationName.innerHTML = "" + results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name;
                 } else {
-                    alert('Location name not found.');
+                    alert('Sorry, the address of this location is not available.');
                 }
             } else {
-                alert('Geocoder failed due to: ' + status);
+                alert('Slow down Speedy Gonzales!');
             }
         });
         

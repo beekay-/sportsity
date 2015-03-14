@@ -195,7 +195,7 @@ a:hover, a:active {
 }
 .link:hover {
     text-decoration: none;
-    background: none;
+    background: rgb(255, 255, 255);
 }
 
 /* CUSTOM SELECT — http://jsfiddle.net/BB3JK/47 */
