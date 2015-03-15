@@ -136,25 +136,24 @@ $('select').each(function () {
     });
 });
 
-
 function parseJSONObject(rawJSONResponse) {
     var parsedModuleObjectResponse = jQuery.parseJSON(rawJSONResponse);                
     return parsedModuleObjectResponse;
 }
 
 var infoBubble;
-// var boxText;
+
 function addVenue(lat, lng, venueType, fields, owner){
-    var location = new google.maps.LatLng(lat, lng);
+    var venueLocation = new google.maps.LatLng(lat, lng);
     var numCourts = fields;
     var ownershipBy = owner;
     var iconPath = getIconPath(venueType);
     var venueMarker = new google.maps.Marker({
         icon: iconPath,
-        position: location,
-        zIndex: 99999
+        position: venueLocation,
+        zIndex: 99999999
     });
-    
+        
     google.maps.event.addListener(venueMarker, 'dblclick', function () {
         infoBubble.close();   
     });
@@ -179,7 +178,26 @@ function addVenue(lat, lng, venueType, fields, owner){
             }
         });
         
+        if (userLocation) {
+            p1 = userLocation;
+            p2 = venueLocation;
+            directionsService = new google.maps.DirectionsService();
+
+            var request = {
+                origin: p1,
+                destination: p2,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+            directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    var locationDistance = document.getElementById('location-distance');
+                    locationDistance.innerHTML = "" + response.routes[0].legs[0].distance.text;
+                }
+            });
+        }
+        
         var boxText = document.createElement("div");
+        
         if (useragent.indexOf('iPhone') != -1) {
             boxText.innerHTML = 
             '<div class="location-mask">' +
@@ -188,6 +206,7 @@ function addVenue(lat, lng, venueType, fields, owner){
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
                 '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-distance">' + '</span>' +
 
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
@@ -202,6 +221,7 @@ function addVenue(lat, lng, venueType, fields, owner){
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
                 '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-distance">' + '</span>' +
 
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
@@ -216,6 +236,7 @@ function addVenue(lat, lng, venueType, fields, owner){
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
                 '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-distance">' + '</span>' +
                 
                 '<div class="location-bg"><div class="shadow">' + 
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +

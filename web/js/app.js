@@ -4,6 +4,8 @@ var yyc = new google.maps.LatLng(51.0333246, -114.0581015);
 var geocoder;
 var likes = 1;
 var useragent = navigator.userAgent;
+var userLocationMarker = null;
+var userLocation;
 
 // CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis.png", null, null, null, new google.maps.Size(27,37));
@@ -141,7 +143,6 @@ function zoomControl(controlDiv, map) {
 
 function getUserLocation() {
     if (navigator.geolocation) {
-        var userLocationMarker = null;
          navigator.geolocation.getCurrentPosition(
             function(position) {
                 userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);

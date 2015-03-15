@@ -328,7 +328,7 @@ a:hover, a:active {
     100% { transform: rotate(-340deg); -webkit-transform: rotate(-340deg); }
 }
 .location-bg {
-    margin: -90px 0 0 -25px;
+    margin: -105px 0 0 -25px;
     -webkit-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
     transform: rotate(-15deg);
@@ -339,7 +339,7 @@ a:hover, a:active {
     height: 128px;
     float: left;
 }
-#location-name, .location-courts, .location-route, .location-ownership {
+#location-name, .location-courts, .location-route, .location-ownership , #location-distance {
     font-size: 1.250em;
     color: rgb(255, 255, 255);
     display: block;
@@ -367,9 +367,12 @@ a:hover, a:active {
 .location-route:hover {
     background: none;   
 }
-.location-courts, .location-ownership {
+.location-courts, .location-ownership, #location-distance {
     font-size: 1em;
     padding: 4px 0 1px 12px;
+}
+#location-distance {
+    text-transform: lowercase;
 }
 #like-system {
     cursor: pointer;
