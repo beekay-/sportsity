@@ -1,32 +1,25 @@
 var venues = [];
 var venueCluster;
+var infoBubble;
 // Iterate over each select element
 $('select').each(function () {
-
     // Cache the number of options
     var $this = $(this),
         numberOfOptions = $(this).children('option').length;
-
     // Hides the select element
     $this.addClass('s-hidden');
-
     // Wrap the select element in a div
     $this.wrap('<div class="select"></div>');
-
     // Insert a styled div to sit over the top of the hidden select element
     $this.after('<div class="styledSelect"></div>');
-
     // Cache the styled div
     var $styledSelect = $this.next('div.styledSelect');
-
     // Show the first select option in the styled div
     $styledSelect.text($this.children('option').eq(0).text());
-
     // Insert an unordered list after the styled div and also cache the list
     var $list = $('<ul />', {
         'class': 'options'
     }).insertAfter($styledSelect);
-
     // Insert a list item into the unordered list for each select option
     for (var i = 0; i < numberOfOptions; i++) {
         $('<li />', {
@@ -34,11 +27,8 @@ $('select').each(function () {
             rel: $this.children('option').eq(i).val()
         }).appendTo($list);
     }
-
     // Cache the list items
     var $listItems = $list.children('li');
-    //$listItems.addClass("sound");
-
     // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
     $styledSelect.click(function (e) {
         e.stopPropagation();
@@ -47,7 +37,6 @@ $('select').each(function () {
         });
         $(this).addClass('active').next('ul.options').show();
     });
-
     // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
     // Updates the select element to have the value of the equivalent option
     $listItems.click(function (e) {
@@ -80,7 +69,6 @@ $('select').each(function () {
             alert("No venues for that sport");
         }
         else {
-            
             $.each(parsedVenueSet.venues, function(key, value) {
                 var myLat = value.latitude;
                 var myLong = value.longitude;
@@ -88,6 +76,7 @@ $('select').each(function () {
                 var fields = value.fields;
                 var owner = value.venueSteward;
                 addVenue(myLat, myLong, venType, fields, owner);
+                venueCourts(fields);
             });
                         
             var clusterOptions = {
@@ -128,7 +117,6 @@ $('select').each(function () {
             });
         }
     });
-
     // Hides the unordered list when clicking outside of it
     $(document).click(function () {
         $styledSelect.removeClass('active');
@@ -141,11 +129,25 @@ function parseJSONObject(rawJSONResponse) {
     return parsedModuleObjectResponse;
 }
 
-var infoBubble;
+function venueCourts(fields) {
+    var numCourts = fields;
+    if (numCourts > 1) {
+        var showCourts = numCourts + " " + "Play Zones" + "&nbsp";
+        return showCourts;
+    } else if (numCourts === 1) {
+        var showCourts = numCourts + " " + "Play Zone" + "&nbsp";
+        return showCourts;
+    } else if (numCourts === 0) {
+        var showCourts = "";
+        return showCourts;
+    } else {
+        return numCourts;
+    }
+}
 
 function addVenue(lat, lng, venueType, fields, owner){
     var venueLocation = new google.maps.LatLng(lat, lng);
-    var numCourts = fields;
+    var numCourts = venueCourts(fields);
     var ownershipBy = owner;
     var iconPath = getIconPath(venueType);
     var venueMarker = new google.maps.Marker({
@@ -163,9 +165,7 @@ function addVenue(lat, lng, venueType, fields, owner){
             infoBubble.close();   
         }
         
-        var locationLatLng = new google.maps.LatLng(lat, lng);
-        
-        geocoder.geocode({'latLng':locationLatLng}, function(results, status) {
+        geocoder.geocode({'latLng':venueLocation}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
                     var locationName = document.getElementById('location-name');
@@ -191,7 +191,7 @@ function addVenue(lat, lng, venueType, fields, owner){
             directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     var locationDistance = document.getElementById('location-distance');
-                    locationDistance.innerHTML = "" + response.routes[0].legs[0].distance.text;
+                    locationDistance.innerHTML = "&#126;" + " " + response.routes[0].legs[0].duration.text + " " + "Away";
                 }
             });
         }
@@ -205,7 +205,7 @@ function addVenue(lat, lng, venueType, fields, owner){
 
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
-                '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-courts">' + numCourts + '</span>' +
                 '<span id="location-distance">' + '</span>' +
 
                 '<div class="location-bg"><div class="shadow">' + 
@@ -220,7 +220,7 @@ function addVenue(lat, lng, venueType, fields, owner){
 
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
-                '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-courts">' + numCourts + '</span>' +
                 '<span id="location-distance">' + '</span>' +
 
                 '<div class="location-bg"><div class="shadow">' + 
@@ -235,7 +235,7 @@ function addVenue(lat, lng, venueType, fields, owner){
                 
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
-                '<span class="location-courts">' + numCourts + " " + 'Courts</span>' +
+                '<span id="location-courts">' + numCourts + '</span>' +
                 '<span id="location-distance">' + '</span>' +
                 
                 '<div class="location-bg"><div class="shadow">' + 
@@ -244,7 +244,7 @@ function addVenue(lat, lng, venueType, fields, owner){
             
             '<span id="like-system" onclick="likeCounter();"><span class="like-label">Like</span>' + '<span id="like-number">1</span></span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
         }
-
+        
         var myOptions = {
             content: boxText,
             disableAutoPan: false,
