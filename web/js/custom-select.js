@@ -156,7 +156,7 @@ function addVenue(lat, lng, venueType, fields, owner){
         zIndex: 99999999
     });
         
-    google.maps.event.addListener(venueMarker, 'dblclick', function () {
+    google.maps.event.addListener(map, 'click', function () {
         infoBubble.close();   
     });
     

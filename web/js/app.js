@@ -87,13 +87,9 @@ function initialize() {
     (function($) {
         $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(200); $('#modal').addClass('animated bounceIn'); });
         $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(200); $('#modal').removeClass('animated bounceIn'); });
-        /*var obj = document.createElement("audio"); 
-        obj.setAttribute("src", "audio/tap.mp3");
-        //$.get(); 
-
-        $(".sound").click(function() { 
-            obj.play(); 
-        });*/
+        document.body.addEventListener('touchmove',function(e){
+            e.preventDefault();
+        });
     }(jQuery));
     
     geocoder = new google.maps.Geocoder();
@@ -160,9 +156,9 @@ function getUserLocation() {
             function(error) {
                 alert("Sorry, something went wrong. Check to see if location services are enabled.", error);
             }, {
-                timeout: (5 * 1000),
-                maximumAge: (1000 * 60 * 15),
-                enableHighAccuracy: false
+                timeout: 10000,
+                maximumAge: 600000,
+                enableHighAccuracy: high
             }); 
     } else {
         alert("Sorry, geolocation is not supported by your browser.");
