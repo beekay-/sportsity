@@ -156,10 +156,6 @@ function addVenue(lat, lng, venueType, fields, owner){
         zIndex: 99999999
     });
         
-    google.maps.event.addListener(map, 'click', function () {
-        infoBubble.close();   
-    });
-    
     google.maps.event.addListener(venueMarker, 'click', function () {
         if (infoBubble) {
             infoBubble.close();   
@@ -262,6 +258,10 @@ function addVenue(lat, lng, venueType, fields, owner){
         infoBubble.open(map,venueMarker);
         map.panTo(venueMarker.getPosition());
         map.panBy(0,-60);
+    });
+    
+    google.maps.event.addListener(venueMarker, 'dblclick', function () {
+        infoBubble.close();   
     });
     
     venues.push(venueMarker);
