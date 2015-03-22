@@ -9,19 +9,22 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="apple-mobile-web-app-title" content="Sportsity">
 <meta name="theme-color" content="#00ab38">
+<meta name="msapplication-square70x70logo" content="img/app/tile-small.png" />
+<meta name="msapplication-square150x150logo" content="img/app/tile-medium.png" />
+<meta name="msapplication-wide310x150logo" content="img/app/tile-wide.png" />
+<meta name="msapplication-square310x310logo" content="img/app/tile-large.png" />
 <title>Sportsity &ndash; Let the Games Begin</title>
 <link rel="stylesheet" href="css/style.css" />
 <link rel="apple-touch-icon-precomposed" href="img/app/apple-touch-icon.png" />
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/app/loadscrn-iphone6.png" />
-<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/app/loadscrn-iphone6p.png" />
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="app/loadscrn-iphone5.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/app/launch-screen-iphone-6.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/app/launch-screen-iphone-6p.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="img/app/launch-screen-iphone-5.png" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 <script src="http://maps.google.com/maps/api/js?sensor=true&amp;libraries=places"> </script>
 </head>
 <body onload="initialize();">
     <div id="menu">
-        <div class="ui sportsity animated bounceInDown">
-            <img src="img/ui/sportsity-logo.png" alt="Sportsity" width="100" height="45" title="About Sportsity" />
-        </div>
+        <div class="ui sportsity animated bounceInDown"> </div>
         <div class="ui location animated bounceInDown" id="geolocate" onclick="getUserLocation();"> 
             <img class="icon" src="img/ui/arrow-locate.png" alt="Locate" title="Locate Me" width="24" height="24" />
         </div>
@@ -32,7 +35,7 @@
         </a>
         <div class="ui dropdown animated bounceInDown">
             <select>
-                <option value="" disabled selected>Choose Your Sport</option>
+                <option value="" disabled selected>Choose Sport</option>
                 <option value="tennis">Tennis</option>
                 <option value="basketball">Basketball</option>
                 <option value="soccer">Soccer</option>
@@ -55,7 +58,7 @@
             <p class="about">Copyright &copy; 2015 Sportsity. Designed and developed by <a href="http://bilalkarim.com" target="_blank">Bilal Karim</a> &amp; <a href="http://kamberov.me" target="_blank">Rustam Kamberov</a>.</p>
             <p class="notice">Data in this application has been modified through the <a href="https://data.calgary.ca">City of Calgary Open Data Catalogue</a>. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
             <p class="credit">Powered by Google Maps API &hearts; </p>
-            <p class="sub-credit">(with Places Library, Directions Service, and Static Maps API)</p>
+            <p class="sub-credit">(with Places Library, Directions Service and Static Maps API)</p>
             <p class="contact">Comments or suggestions? <br /> Send an email to <a href="mailto:info@sportsity.co?Subject=Sportsity%20Feedback">info@sportsity.co</a></p>
         </div>
 <script src="js/jquery.min.js"> </script>

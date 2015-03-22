@@ -33,7 +33,7 @@ body {
     position: absolute;
     z-index: 99;
     width: 100%;
-    max-width: 426px;
+    max-width: 406px;
     display: -webkit-box;
     display: -moz-box-flex;
     display: -webkit-flex;
@@ -51,15 +51,15 @@ body {
     border-radius: 3px;
     -webkit-animation-delay: 1s;
     animation-delay: 1s;
-    margin: 10px 5px 10px 5px;
+    margin: 8px 4px;
     text-align: center;
     cursor: pointer;
 }
 .ui:first-child {
-    margin-left: 10px;
+    margin-left: 8px;
 }
 .ui:last-child {
-    margin-right: 10px;
+    margin-right: 8px;
     text-align: left;
 }
 .overlay {
@@ -90,7 +90,10 @@ body {
 }
 .sportsity {
     width: 100px;
-    background: rgb(0, 171, 56);
+    height: 45px;
+    background: rgb(0, 171, 56) url('../img/ui/sportsity-logo.png');
+    background-size: 100px 45px;
+    background-repeat: no-repeat;
 }
 .icon {
     position: relative;
@@ -202,7 +205,7 @@ a:hover, a:active {
 
 .s-hidden {
     visibility: hidden;
-    padding: 14px;
+    padding: 12px;
     -webkit-margin-before: 12px;
 }
 .select {
@@ -218,7 +221,7 @@ a:hover, a:active {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 14px;
+    padding: 14px 12px;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
 }
@@ -229,7 +232,7 @@ a:hover, a:active {
     background: url('../img/ui/arrow-dropdown.png') no-repeat center center;
     background-size: 24px 24px;
     position: absolute;
-    right: 13px;
+    right: 12px;
     z-index: 9999;
 }
 .styledSelect:active, .styledSelect.active {
@@ -253,7 +256,7 @@ a:hover, a:active {
 }
 .options li {
     margin: 0 0;
-    padding: 14px;
+    padding: 14px 12px;
 }
 .options li:hover {
     background: rgb(0, 171, 56);
@@ -459,12 +462,10 @@ a:hover, a:active {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 42em) {
-    .location, .vote {
-        display: none;
-    }
-    .dropdown {
-        -webkit-animation-delay: 1.2s;
-        animation-delay: 1.2s;
+    .sportsity {
+        width: 45px;
+        background: rgb(0, 171, 56) url('../img/ui/sportsity-logo-sm.png') no-repeat center;
+        background-size: 37px 37px;
     }
     .zoom-buttons {
         -webkit-animation-delay: 1s;

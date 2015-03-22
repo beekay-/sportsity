@@ -96,7 +96,7 @@ function initialize() {
 }
 
 function zoomControl(controlDiv, map) {
-    controlDiv.style.padding = '0 0 20px 0';
+    controlDiv.style.padding = '0 0 18px 0';
     var controlWrapper = document.createElement('div');
     controlWrapper.style.backgroundColor = 'white';
     controlWrapper.style.cursor = 'pointer';
