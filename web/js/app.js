@@ -80,15 +80,20 @@ function initialize() {
     zoomControlDiv.className = "zoom-buttons animated bounceInUp";
     map.controls[google.maps.ControlPosition.BOTTOM].push(zoomControlDiv);
     
-    (function($) {
-        $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(200); $('#modal').addClass('animated bounceIn'); });
-        $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(200); $('#modal').removeClass('animated bounceIn'); });
-        document.body.addEventListener('touchmove',function(e){
-            e.preventDefault();
-        });
-    }(jQuery));
-    
     geocoder = new google.maps.Geocoder();
+    
+    var allowedBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(50.83108908325788, -114.49755462500002),
+        new google.maps.LatLng(51.33533507082708, -113.61864837500002)
+    );
+    var lastValidCenter = map.getCenter();
+    google.maps.event.addListener(map, 'center_changed', function() {
+        if (allowedBounds.contains(map.getCenter())) {
+            lastValidCenter = map.getCenter();
+            return;
+        }
+        map.panTo(lastValidCenter);
+    });
 }
 
 function zoomControl(controlDiv, map) {
@@ -130,7 +135,7 @@ function zoomControl(controlDiv, map) {
     });
     google.maps.event.addDomListener(zoomOutButton, 'click', function() {
         map.setZoom(map.getZoom() - 1);
-    });  
+    });
 }
 
 function getUserLocation() {
@@ -181,3 +186,11 @@ if ('addEventListener' in document) {
         FastClick.attach(document.body);
     }, false);
 }
+
+(function($) {
+    $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(200); $('#modal').addClass('animated bounceIn'); });
+    $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(200); $('#modal').removeClass('animated bounceIn'); });
+    document.body.addEventListener('touchmove',function(e){
+        e.preventDefault();
+    });
+}(jQuery));

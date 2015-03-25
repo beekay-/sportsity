@@ -377,6 +377,9 @@ a:hover, a:active {
     display: inline;
     float: left;
 }
+#location-courts {
+    min-height: 12px;
+}
 #location-distance {
     padding-left: 0;
 }
