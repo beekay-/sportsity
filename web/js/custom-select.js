@@ -177,7 +177,6 @@ function addVenue(lat, lng, venueType, fields, owner){
         if (userLocation) {
             p1 = userLocation;
             p2 = venueLocation;
-            directionsService = new google.maps.DirectionsService();
 
             var request = {
                 origin: p1,
@@ -186,6 +185,9 @@ function addVenue(lat, lng, venueType, fields, owner){
             };
             directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
+                    
+                    directionsDisplay.setDirections(response);
+                    directionsDisplay.setMap(map);
                     var locationDistance = document.getElementById('location-distance');
                     locationDistance.innerHTML = "&#126;" + " " + response.routes[0].legs[0].duration.text + " " + "Away";
                 }
@@ -261,7 +263,8 @@ function addVenue(lat, lng, venueType, fields, owner){
     });
     
     google.maps.event.addListener(venueMarker, 'dblclick', function () {
-        infoBubble.close();   
+        infoBubble.close();
+        directionsDisplay.setMap(null);
     });
     
     venues.push(venueMarker);
