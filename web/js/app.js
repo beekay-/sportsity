@@ -153,6 +153,9 @@ function getUserLocation() {
                     icon: getIcon('user'),
                     optimized: false
                 });
+                google.maps.event.addListener(userLocationMarker, 'click', function() {
+                    map.setZoom(15);
+                });
             },
             function(error) {
                 alert("Sorry, something went wrong. Check to see if location services are enabled.", error);
