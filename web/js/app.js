@@ -64,8 +64,8 @@ function initialize() {
     
     var mapOptions = {
         zoom: 11,
-        minZoom: 11,
-        maxZoom: 18,
+        minZoom: 10,
+        maxZoom: 16,
         center: yyc,
         overviewMapControl: true,
         disableDefaultUI: true,
