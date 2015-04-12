@@ -54,7 +54,6 @@ $('select').each(function () {
         }
         
         map.setCenter(yyc);
-        map.setZoom(10);
         
         var JSONResponse = $.ajax({  
                 type: "GET",  
