@@ -4,7 +4,7 @@ var yyc = new google.maps.LatLng(51.0333246, -114.0581015);
 var geocoder;
 var likes = 1;
 var useragent = navigator.userAgent;
-var userLocationMarker = null;
+var userLocationMarker;
 var userLocation;
 var directionsDisplay;
 directionsService = new google.maps.DirectionsService();
@@ -142,11 +142,9 @@ function getUserLocation() {
     if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(
             function(position) {
-                var userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-                if (allowedBounds.contains(userLocation)) {
-                    return userLocationMarker;
-                } else {
-                    alert("Sorry, Sportsity is currently available in Calgary only.");
+                userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                if (userLocationMarker) {
+                    return;
                 }
                 map.setCenter(userLocation);
                 userLocationMarker = new google.maps.Marker({
