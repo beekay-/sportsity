@@ -13,6 +13,8 @@ var allowedBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(51.33533507082708, -113.61864837500002)
 );
 
+var likabilityNumber;
+
 // CUSTOM MARKERS
 var tennisIcon = new google.maps.MarkerImage("img/markers/tennis.png", null, null, null, new google.maps.Size(27,37));
 var soccerIcon = new google.maps.MarkerImage("img/markers/soccer.png", null, null, null, new google.maps.Size(27,37));
@@ -167,14 +169,6 @@ function getUserLocation() {
     } else {
         alert("Sorry, geolocation is not supported by your browser.");
     }
-}
-
-function likeCounter() {
-    likes++;
-    var likeNum = document.getElementById('like-number');
-    likeNum.innerHTML = +likes;
-    likeNum.className = 'press';
-    setTimeout(function() { likeNum.className = ''; }, 200);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -18,6 +18,103 @@ import java.sql.SQLException;
  */
 public class VenueDB {
     
+    public static boolean venueExists(int venueId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = connectionPool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT l.venue_id "
+                        + "FROM likability as l "
+                        + "WHERE venue_id = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, venueId);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            connectionPool.freeConnection(connection);
+        }
+    }
+    
+    public static int insert(int venueId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection  = connectionPool.getConnection();
+        PreparedStatement ps = null;
+        String query = "INSERT INTO likability (venue_id, likability) "
+                        + "VALUES (?, 1);";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, venueId);
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            DBUtil.closePreparedStatement(ps);
+            connectionPool.freeConnection(connection);
+        }
+        
+    }
+    
+    public static int updateLikability(int venueId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection  = connectionPool.getConnection();
+        PreparedStatement ps = null;
+        String query = "UPDATE likability SET likability = likability + 1 "
+                        + "WHERE venue_id = ?; ";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, venueId);
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+
+            DBUtil.closePreparedStatement(ps);
+            connectionPool.freeConnection(connection);
+        }
+        
+    }
+    
+        public static int getLikabilityNumber(int venueId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection  = connectionPool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT l.likability "
+                        + "FROM likability as l "
+                        + "WHERE l.venue_id = ?;";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, venueId);
+            rs = ps.executeQuery();
+            
+            int likesNumber = 0;
+            
+            while (rs.next()) {
+                likesNumber = rs.getInt("likability");
+            }
+            System.out.println("like on VenueDB: " + likesNumber);
+            return likesNumber;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            connectionPool.freeConnection(connection);
+        }
+        
+    }
+    
     public static VenueSet getVenues(String venueType) {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         Connection connection = connectionPool.getConnection();
