@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index.jsp
+    Created on : May 3, 2015, 10:30:19 PM
+    Author     : rustamkamberov
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

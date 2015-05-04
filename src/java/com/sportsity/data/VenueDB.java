@@ -102,7 +102,7 @@ public class VenueDB {
             while (rs.next()) {
                 likesNumber = rs.getInt("likability");
             }
-            System.out.println("like on VenueDB: " + likesNumber);
+
             return likesNumber;
         } catch (SQLException e) {
             System.out.println(e);

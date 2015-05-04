@@ -37,6 +37,8 @@ public class GetLikability extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+        
         String action = request.getParameter("action");
         String venueIDString = request.getParameter("venueID");
         int venueID = Integer.parseInt(venueIDString);
@@ -45,13 +47,15 @@ public class GetLikability extends HttpServlet {
         String venC = CookieUtil.getCookieValue(cookies, "venueIDCookie".concat(venueIDString));
         
         int likeNumber = 0;
-        
+        System.out.println("venC: " + venC);
         if (action.equals("update likability status")){
             if (!venC.equals(venueIDString)) {
                 Cookie venueCookie = new Cookie("venueIDCookie".concat(venueIDString), venueIDString);
-
+                System.out.println("venueCookie value:" + venueCookie.getValue());
+                System.out.println("venueCookie name:" + venueCookie.getName());
                 venueCookie.setMaxAge(60*60*24*365);
                 response.addCookie(venueCookie);
+                
                 
                 if (VenueDB.venueExists(venueID)){
                     VenueDB.updateLikability(venueID);
@@ -81,6 +85,8 @@ public class GetLikability extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(jsonLikability);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
