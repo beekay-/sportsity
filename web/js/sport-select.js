@@ -1,6 +1,8 @@
 var venues = [];
 var venueCluster;
 var infoBubble;
+
+
 // Iterate over each select element
 $('select').each(function () {
     // Cache the number of options
@@ -136,13 +138,16 @@ function likeCounter(venueID) {
               action: "update likability status"
             },
         success: function(data){	
-            likabilityNumber = data;
-            console.log("when clicked on Like Icon! likabilityNumber:" + likabilityNumber);
+            
+            console.log("when clicked on Like Icon! likabilityNumber:" + data);
             /*
                 Within this code, the CSS should get the likability number
             */
         }}
     );
+    //var myVar = document.getElementbyId('#like-number');
+    //alert(myVar);
+    
     /*
     likes++;
     */
@@ -201,8 +206,8 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                   action: "get likability status"
                 },
             success: function(data){	
-                likabilityNumber = data;
-                console.log(" when clicked on marker! likabilityNumber:" + likabilityNumber);
+                $('#like-number').val(data);
+                console.log(" when clicked on marker! likabilityNumber:" + data);
                 /*
                     Within this code, the CSS should get the likability number
                 */
@@ -245,7 +250,7 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
         }
         
         var boxText = document.createElement("div");
-        
+
         if (useragent.indexOf('iPhone') != -1) {
             boxText.innerHTML = 
             '<div class="location-mask">' +
@@ -260,7 +265,7 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
             
-            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">1</span></span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:&body=Let\’s go play' + " " + venueType + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
+            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">'+ 25+'</span></span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:&body=Let\’s go play' + " " + venueType + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
         } else if (useragent.indexOf('Android') != -1) {
             boxText.innerHTML =
             '<div class="location-mask">' +
@@ -290,7 +295,7 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
             
-            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">1</span></span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
+            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number"></span></span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
         }
         
         var myOptions = {
