@@ -12,7 +12,6 @@ var allowedBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(50.83108908325788, -114.49755462500002),
     new google.maps.LatLng(51.33533507082708, -113.61864837500002)
 );
-
 var likabilityNumber;
 
 // CUSTOM MARKERS

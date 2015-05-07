@@ -2,7 +2,6 @@ var venues = [];
 var venueCluster;
 var infoBubble;
 
-
 // Iterate over each select element
 $('select').each(function () {
     // Cache the number of options
@@ -55,6 +54,7 @@ $('select').each(function () {
             infoBubble.close();
         }
         
+        map.setZoom(11);
         map.setCenter(yyc);
         
         var JSONResponse = $.ajax({  
@@ -128,6 +128,8 @@ $('select').each(function () {
 
 
 function likeCounter(venueID) {
+var likeNumber = document.getElementById("like-number");
+likeNumber.className = 'press';
 
     $.ajax({
         url: "getLikability",
@@ -138,25 +140,9 @@ function likeCounter(venueID) {
               action: "update likability status"
             },
         success: function(data){	
-            
-            console.log("when clicked on Like Icon! likabilityNumber:" + data);
-            /*
-                Within this code, the CSS should get the likability number
-            */
+            likeNumber.innerHTML = data;
         }}
-    );
-    //var myVar = document.getElementbyId('#like-number');
-    //alert(myVar);
-    
-    /*
-    likes++;
-    */
-    //var likeNum = document.getElementById('like-number');
-    //likeNum.innerHTML = +likes;
-    //likeNum.innerHTML = +likes;
-    //likeNum.className = 'press';
-    //setTimeout(function() { likeNum.className = ''; }, 200);
-    
+    );  
 }
 
 
@@ -205,17 +191,12 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                   venueID: JSON.stringify(venueID),
                   action: "get likability status"
                 },
-            success: function(data){	
-                $('#like-number').val(data);
-                console.log(" when clicked on marker! likabilityNumber:" + data);
-                /*
-                    Within this code, the CSS should get the likability number
-                */
+            success: function(data) {
+                var likeNumber = document.getElementById("like-number");
+                likeNumber.innerHTML = data;
             }}
         );
         
-        
-        console.log("venueID: " + venueID);
         geocoder.geocode({'latLng':venueLocation}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
@@ -238,9 +219,9 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                 destination: p2,
                 travelMode: google.maps.DirectionsTravelMode.DRIVING
             };
+            
             directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    
                     directionsDisplay.setDirections(response);
                     directionsDisplay.setMap(map);
                     var locationDistance = document.getElementById('location-distance');
