@@ -1,10 +1,3 @@
-<%-- 
-    Document   : index.jsp
-    Created on : May 3, 2015, 10:30:19 PM
-    Author     : rustamkamberov
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -68,9 +61,7 @@
             <p class="sub-credit">(with Directions Service and Static Maps API)</p>
             <p class="contact">Comments or suggestions? <br /> Send an email to <a href="mailto:info@sportsity.co?Subject=Sportsity%20Feedback">info@sportsity.co</a></p>
         </div>
-<!--<script src="js/jquery.min.js"> </script>-->
-<script src="js/jquery-1.11.2.js"> </script>
-
+<script src="js/jquery.min.js"> </script>
 <script src="js/infobox.js"> </script>
 <script src="js/map.js"> </script>
 <script src="js/markerclusterer.js"> </script>
