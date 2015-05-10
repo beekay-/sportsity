@@ -67,6 +67,18 @@
 <script src="js/markerclusterer.js"> </script>
 <script src="js/sport-select.js"> </script>
 <script src="js/fastclick.js"> </script>
+<script src="js/outbound.js"> </script>
 <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})() </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62756196-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+  ga('require', 'linkid', 'linkid.js');
+</script>
 </body>
 </html>
