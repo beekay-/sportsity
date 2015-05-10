@@ -388,6 +388,8 @@ a:hover, a:active {
     float: left;
     width: 65px;
     height: 22px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 .like-label, #like-number {
     text-align: left;
@@ -432,6 +434,8 @@ a:hover, a:active {
 .tw:hover {
     background-position: 0 0;
     opacity: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 .fb {
     background-position: -20px -20px;
@@ -439,14 +443,18 @@ a:hover, a:active {
 .fb:hover {
     background-position: 0 -20px;
     opacity: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 .sms {
     background-position: -20px -40px;
-    margin: 0;   
+    margin: 0; 
 }
 .sms:hover {
     background-position: 0 -40px;
     opacity: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 @-webkit-keyframes likefx {
     0% { transform: scale(1.1); -webkit-transform: scale(1.1); opacity: 1; }
