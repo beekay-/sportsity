@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 var map;
-var yyc = new google.maps.LatLng(51.0333246, -114.0581015);
+var yyc = new google.maps.LatLng(51.0433246, -114.0681015);
 var geocoder;
 var likes = 1;
 var useragent = navigator.userAgent;
@@ -68,7 +68,7 @@ function initialize() {
     });
     
     var mapOptions = {
-        zoom: 11,
+        zoom: 12,
         minZoom: 10,
         maxZoom: 16,
         center: yyc,
@@ -95,6 +95,10 @@ function initialize() {
         }
         map.panTo(lastValidCenter);
     });
+    
+    if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
+        map.setZoom(11);
+    } 
 }
 
 function zoomControl(controlDiv, map) {
@@ -190,3 +194,20 @@ if ('addEventListener' in document) {
         e.preventDefault();
     });
 }(jQuery));
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-62756196-1']);
+  
+if (window.navigator.standalone == true && (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i))) {
+    _gaq.push(['_setCustomVar', 1, 'Web App Installed', 'Yes', 2 ]);
+}
+else {
+    _gaq.push(['_setCustomVar', 1, 'Web App Installed', 'No', 2 ]);
+}
+
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    //ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();

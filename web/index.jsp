@@ -34,7 +34,7 @@
            
         </a>
         <div class="ui dropdown animated bounceInDown">
-            <select>
+            <select onchange="ga('send','event','Form Event','Select Changed',this.options[this.selectedIndex].text);">
                 <option value="" disabled selected>Choose Sport</option>
                 <option value="tennis">Tennis</option>
                 <option value="basketball">Basketball</option>
@@ -75,7 +75,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-62756196-1', 'auto');
+  ga('create', 'UA-62756196-1', 'app.sportsity.co');
   ga('require', 'displayfeatures');
   ga('send', 'pageview');
   ga('require', 'linkid', 'linkid.js');
