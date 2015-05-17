@@ -137,9 +137,10 @@ function zoomControl(controlDiv, map) {
 
     google.maps.event.addDomListener(zoomInButton, 'click', function() {
         map.setZoom(map.getZoom() + 1);
+        ga("send","event","Zoomed In","Clicks");
     });
     google.maps.event.addDomListener(zoomOutButton, 'click', function() {
-        map.setZoom(map.getZoom() - 1);
+        ga("send","event","Zoomed Out","Clicks");
     });
 }
 
@@ -152,6 +153,7 @@ function getUserLocation() {
                     return;
                 }
                 map.setCenter(userLocation);
+                ga("send","event","User Location","Shared");
                 userLocationMarker = new google.maps.Marker({
                     position: userLocation,
                     map: map,
@@ -188,26 +190,9 @@ if ('addEventListener' in document) {
 }
 
 (function($) {
-    $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(200); $('#modal').addClass('animated bounceIn'); });
+    $('.sportsity').click(function () { $('#modal, .overlay').fadeIn(50); $('#modal').addClass('animated bounceIn'); ga("send","event","About Modal","Views"); });
     $('.get-started,.overlay').click(function () { $('#modal, .overlay').fadeOut(200); $('#modal').removeClass('animated bounceIn'); });
     document.body.addEventListener('touchmove',function(e){
         e.preventDefault();
     });
 }(jQuery));
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-62756196-1']);
-  
-if (window.navigator.standalone == true && (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i))) {
-    _gaq.push(['_setCustomVar', 1, 'Web App Installed', 'Yes', 2 ]);
-}
-else {
-    _gaq.push(['_setCustomVar', 1, 'Web App Installed', 'No', 2 ]);
-}
-
-(function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    //ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();

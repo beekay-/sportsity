@@ -46,6 +46,8 @@ $('select').each(function () {
         $this.val($(this).attr('rel'));
         $list.hide();
         
+        ga("send","event","Sport","Clicks",$this.val());
+        
         if (typeof venueCluster != "undefined") {
             deleteVenues();
         }    
@@ -179,6 +181,8 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
     });
         
     google.maps.event.addListener(venueMarker, 'click', function () {
+        ga("send","event","Venue Marker","Views",venueID);
+        
         if (infoBubble) {
             infoBubble.close();   
         }
@@ -235,7 +239,7 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
         if (useragent.indexOf('iPhone') != -1) {
             boxText.innerHTML = 
             '<div class="location-mask">' +
-                '<a class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+                '<a onclick=\'ga("send","event","Google Maps","Views")\' class="location-route" href="comgooglemaps://?daddr=' + lat + ',' + lng + '&zoom=18&views=satellite,traffic"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
 
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
@@ -246,26 +250,11 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
             
-            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">'+ 25+'</span></span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:&body=Let\'s go play' + " " + venueType + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
-        } else if (useragent.indexOf('Android') != -1) {
-            boxText.innerHTML =
-            '<div class="location-mask">' +
-                '<a class="location-route" target="_blank" href="https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
-
-                '<span id="location-name"> </span>' + 
-                '<span class="location-ownership">' + ownershipBy + '</span>' +
-                '<span id="location-courts">' + numCourts + '</span>' +
-                '<span id="location-distance">' + '</span>' +
-
-                '<div class="location-bg"><div class="shadow">' + 
-                '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
-            '</div>' +
-            
-            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">1</span></span>' + '<span class="networks-sm"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a href="sms:?body=Let\'s go play' + " " + venueType + ' at' + " " + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
+            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number">'+ 25+'</span></span>' + '<span class="networks-sm"><a onclick=\'ga("send","event","Twitter Share","Clicks")\' href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a onclick=\'ga("send","event","Facebook Share","Clicks")\' href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a><a onclick=\'ga("send","event","SMS Share","Clicks")\' href="sms:&body=Let\'s%20go%20play' + "%20" + venueType + '%20at' + "%20" + 'https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3">' + '<span class="sms"></span></a></span>';
         } else {
             boxText.innerHTML = 
             '<div class="location-mask">' +
-                '<a class="location-route" target="_blank" href="https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
+                '<a onclick=\'ga("send","event","Google Maps","Views")\' class="location-route" target="_blank" href="https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"><img src="img/ui/directions.png" width="32" height="32" alt="Directions"/></a>' +
                 
                 '<span id="location-name"> </span>' + 
                 '<span class="location-ownership">' + ownershipBy + '</span>' +
@@ -276,7 +265,7 @@ function addVenue(venueID, lat, lng, venueType, fields, owner){
                 '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + lng + '&zoom=18&size=285x245&maptype=satellite&format=png32&key=AIzaSyCuQopAhAbQ4In9h73Y8g_yKlhliDifRyI" /></div></div>' +
             '</div>' +
             
-            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number"></span></span>' + '<span class="networks-lg"><a href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
+            '<span id="like-system" onclick="likeCounter('+venueID+');"><span class="like-label">Like</span>' + '<span id="like-number"></span></span>' + '<span class="networks-lg"><a onclick=\'ga("send","event","Twitter Share","Clicks")\' href="https://twitter.com/share?&text=Let\’s go play' + " " + venueType + ' at&url=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3&hashtags=LetTheGamesBegin,yyc&via=sportsityapp"' + 'target="_blank"' + '><span class="tw"></span></a><a onclick=\'ga("send","event","Facebook Share","Clicks")\' href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.ca/maps/dir//' + lat + ',' + lng + '/@' + lat + ',' + lng + ',239m/data=!3m1!1e3"' + 'target="_blank"' + '><span class="fb"></span></a></span>';
         }
         
         var myOptions = {
