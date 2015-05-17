@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="calgary sports, sports data, sports map, availability of courts, outdoor sports location, soccer calgary, tennis calgary, cricket calgary, rugby calgary, volleyball calgary, sportsity, google maps api" />
-<meta name="description" content="Discover and share nearby courts for your favourite outdoor sports." />
+<meta name="description" content="Discover nearby courts for your favorite outdoor sports." />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -13,7 +13,7 @@
 <meta name="msapplication-square150x150logo" content="img/app/tile-medium.png" />
 <meta name="msapplication-wide310x150logo" content="img/app/tile-wide.png" />
 <meta name="msapplication-square310x310logo" content="img/app/tile-large.png" />
-<title>Sportsity &ndash; Let the Games Begin</title>
+<title>App &bullet; Sportsity &ndash; Discover nearby courts for your favorite outdoor sports</title>
 <link rel="stylesheet" href="css/app.min.css" />
 <link rel="apple-touch-icon-precomposed" href="img/app/apple-touch-icon.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/app/launch-screen-iphone-6.png" />
@@ -34,7 +34,7 @@
            
         </a>
         <div class="ui dropdown animated bounceInDown">
-            <select onchange="ga('send','event','Form Event','Select Changed',this.options[this.selectedIndex].text);">
+            <select>
                 <option value="" disabled selected>Choose Sport</option>
                 <option value="tennis">Tennis</option>
                 <option value="basketball">Basketball</option>
@@ -56,7 +56,7 @@
             <p>Discover and share nearby courts for your favourite outdoor sports.</p>
             <div class="get-started">Let the Games Begin</div>
             <p class="about">Copyright &copy; 2015 Sportsity. Designed and developed by <a href="http://bilalkarim.com" target="_blank">Bilal Karim</a> &amp; <a href="http://kamberov.me" target="_blank">Rustam Kamberov</a>.</p>
-            <p class="notice">Data in this application has been modified through the <a href="https://data.calgary.ca">City of Calgary Open Data Catalogue</a>. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
+            <p class="notice">Data provided by the <a href="https://data.calgary.ca" target="_blank">City of Calgary Open Data Catalogue</a>. Application hosted on <a href="http://cybera.ca/projects/cloud-resources/rapid-access-cloud" target="_blank">Rapid Access Cloud</a> by <a href="http://cybera.ca" target="_blank">Cybera</a>. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
             <p class="credit">Powered by Google Maps API &hearts; </p>
             <p class="sub-credit">(with Directions Service and Static Maps API)</p>
             <p class="contact">Comments or suggestions? <br /> Send an email to <a href="mailto:info@sportsity.co?Subject=Sportsity%20Feedback">info@sportsity.co</a></p>
