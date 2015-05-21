@@ -1,3 +1,5 @@
 /build/
 /dist/
 /node_modules/
+/web/META-INF/
+/web/WEB-INF/
