@@ -888,7 +888,7 @@ function initialize() {
     var mapOptions = {
         zoom: 12,
         minZoom: 10,
-        maxZoom: 16,
+        maxZoom: 18,
         center: yyc,
         overviewMapControl: true,
         disableDefaultUI: true,
@@ -958,6 +958,7 @@ function zoomControl(controlDiv, map) {
         ga("send","event","Zoomed In","Clicks");
     });
     google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+        map.setZoom(map.getZoom() - 1);
         ga("send","event","Zoomed Out","Clicks");
     });
 }
