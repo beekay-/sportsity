@@ -14,7 +14,7 @@
 <meta name="msapplication-wide310x150logo" content="img/app/tile-wide.png" />
 <meta name="msapplication-square310x310logo" content="img/app/tile-large.png" />
 <title>App &bullet; Sportsity &ndash; Discover nearby courts for your favorite outdoor sports</title>
-<link rel="stylesheet" href="css/app.min.css" />
+<link rel="stylesheet" href="css/style.css" />
 <link rel="apple-touch-icon-precomposed" href="img/app/apple-touch-icon.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="img/app/launch-screen-iphone-6.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="img/app/launch-screen-iphone-6p.png" />
@@ -55,6 +55,7 @@
             <p><img src="img/ui/sportsity-logo-alt.png" alt="Sportsity" width="188" height="48" /> </p>
             <p>Discover and share nearby courts for your favourite outdoor sports.</p>
             <div class="get-started">Let the Games Begin</div>
+            <p class="learn-more">or <a href="http://sportsity.co">Learn More &rarr;</a></p>
             <p class="about">Copyright &copy; 2015 Sportsity. Designed and developed by <a href="http://bilalkarim.com" target="_blank">Bilal Karim</a> &amp; <a href="http://kamberov.me" target="_blank">Rustam Kamberov</a>.</p>
             <p class="notice">Data provided by the <a href="https://data.calgary.ca" target="_blank">City of Calgary Open Data Catalogue</a>. Application hosted on <a href="http://cybera.ca/projects/cloud-resources/rapid-access-cloud" target="_blank">Rapid Access Cloud</a> by <a href="http://cybera.ca" target="_blank">Cybera</a>. Sportsity is not responsible for any injuries or unavailable courts at the time of your play.</p>
             <p class="credit">Powered by Google Maps API &hearts; </p>

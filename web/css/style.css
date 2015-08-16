@@ -75,7 +75,7 @@ body {
 }
 #modal {
     display: none;
-    height: 430px;
+    height: 446px;
     width: 260px;
     position: absolute;
     left: 0; right: 0;
@@ -147,6 +147,10 @@ p {
 .about {
     font-size: 0.750em;
 }
+.learn-more {
+    line-height: 90%;
+    font-size: 0.750em;
+}
 .notice, .contact, .credit {
     font-size: 0.625em;
 }
@@ -164,7 +168,7 @@ p {
     padding: 16px;
     width: auto;
     font-weight: 500;
-    margin: 5px 5px 22px 5px;
+    margin: 5px 5px 12px 5px;
     text-transform: uppercase;
     color: rgb(255, 255, 255);
     text-align: center;
